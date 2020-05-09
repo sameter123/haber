@@ -14,7 +14,7 @@
                 <div class="card profile-with-cover border-left-pink border-left-2">
                     <nav class="navbar navbar-light">
                                     <span class="text-left">
-                                        Hoşgeldiniz <strong>{{Auth::user()->name}} {{Auth::user()->last_name}}</strong>
+                                        Hoşgeldinizz <strong>{{Auth::user()->name}} {{Auth::user()->last_name}}</strong>
                                     </span>
                         <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse" aria-expanded="false"
                                 aria-label="Toggle navigation"></button>
