@@ -13,6 +13,9 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
@@ -144,6 +147,7 @@
       <updated>1588721568198</updated>
       <workItem from="1588721569624" duration="3255000" />
       <workItem from="1588779965338" duration="616000" />
+      <workItem from="1589056566829" duration="893000" />
     </task>
     <servers />
   </component>
