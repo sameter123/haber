@@ -5648,7 +5648,7 @@
       <workItem from="1588721569624" duration="3255000" />
       <workItem from="1588779965338" duration="616000" />
       <workItem from="1589058602318" duration="840000" />
-      <workItem from="1589157740904" duration="5469000" />
+      <workItem from="1589157740904" duration="8103000" />
     </task>
     <servers />
   </component>
@@ -5664,10 +5664,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589159710996" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1589160282239">
+    <state x="748" y="334" key="NewPhpClassDialog" timestamp="1589168379785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589160282239" />
+    <state x="748" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589168379785" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1589168733277">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589168733277" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1589160459335">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
