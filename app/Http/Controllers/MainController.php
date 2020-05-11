@@ -9,4 +9,8 @@ class MainController extends Controller
     public function index() {
         return view('index');
     }
+
+    public function get_home(){
+        return view ('backend.home');
+    }
 }
