@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', 'MainController@index');
 
 Route::get('/giris', 'LoginController@login')->name('giris');
 Route::post('/giris', 'LoginController@login_post');
-Route::get('/admin', 'MainController@get_home');
 
 
 Auth::routes();

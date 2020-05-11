@@ -10,7 +10,4 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function get_home(){
-        return view ('backend.home');
-    }
 }
