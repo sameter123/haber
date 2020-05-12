@@ -5648,7 +5648,7 @@
       <workItem from="1588721569624" duration="3255000" />
       <workItem from="1588779965338" duration="616000" />
       <workItem from="1589058602318" duration="840000" />
-      <workItem from="1589157740904" duration="12110000" />
+      <workItem from="1589157740904" duration="23906000" />
     </task>
     <servers />
   </component>
@@ -5680,6 +5680,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="768" y="385" width="383" height="270" key="XPathView.InputDialog.DIMENSION_SERVICE_KEY.SIMPLE/0.0.1920.1040@0.0.1920.1040" timestamp="1588721840786" />
+    <state x="602" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589246057483">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="602" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589246057483" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

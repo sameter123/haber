@@ -1,75 +1,84 @@
+<?php
+function file_get_contents_utf8($fn) {
+    $content = file_get_contents($fn);
+    return mb_convert_encoding($content, 'UTF-8',
+        mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+}
+$getir = "https://www.tff.org/Default.aspx?pageID=976&grupID=1765#grp";
+$veriler = file_get_contents_utf8($getir);
+for ($i=1; $i < 19; $i++) {
+    if($i < 10) {
+        $i = "0".$i;
+    }
+    $takim = preg_match_all('@<a id="ctl00_MPane_m_976_9896_ctnr_m_976_9896_grvACetvel_ctl'.$i.'_lnkTakim" href="(.*?)">(.*?)</a>@', $veriler, $takimlar[]);
+}
+for ($i=1; $i < 19; $i++) {
+    if($i < 10) {
+        $i = "0".$i;
+    }
+    $takim = preg_match_all('@<span id="ctl00_MPane_m_976_9896_ctnr_m_976_9896_grvACetvel_ctl'.$i.'_Label4">(.*?)</span>@', $veriler, $galibiyetler[]);
+}
+for ($i=1; $i < 19; $i++) {
+    if($i < 10) {
+        $i = "0".$i;
+    }
+    $takim = preg_match_all('@<span id="ctl00_MPane_m_976_9896_ctnr_m_976_9896_grvACetvel_ctl'.$i.'_lblKazanma">(.*?)</span>@', $veriler, $beraberlikler[]);
+}
+for ($i=1; $i < 19; $i++) {
+    if($i < 10) {
+        $i = "0".$i;
+    }
+    $takim = preg_match_all('@<span id="ctl00_MPane_m_976_9896_ctnr_m_976_9896_grvACetvel_ctl'.$i.'_lblPuan">(.*?)</span>@', $veriler, $maglubiyetler[]);
+}
+for ($i=1; $i < 19; $i++) {
+    if($i < 10) {
+        $i = "0".$i;
+    }
+    $takim = preg_match_all('@<span id="ctl00_MPane_m_976_9896_ctnr_m_976_9896_grvACetvel_ctl'.$i.'_Label3">(.*?)</span>@', $veriler, $puanlar[]);
+}
+?>
+
 <!-- START GAMES RESULT POST -->
 <div class="panel_inner games-news">
     <div class="panel_header">
-        <h4><strong>Last</strong> Game Results</h4>
-    </div>
-    <div class="panel_body">
-        <div class="games-result-header">
-            <h3 class="games-result-title">Championship Quarter Finals</h3>
-            <time class="games-result-date" datetime="2016-03-24">Saturday, March 24th, 2017</time>
-        </div>
-        <div class="games-result-main">
-            <!-- 1st Team -->
-            <div class="games-result-team">
-                <div class="games-result-team-logo">
-                    <a href="#"><img src="assets/images/game_results_logo_1.png" class="img-responsive" alt=""></a>
-                </div>
-                <div class="games-result-team-info">
-                    <h5 class="games-result-team-name">Alchemists</h5>
-                    <div class="games-result-team-desc">Elric School</div>
-                </div>
-            </div>
-            <!-- 1st Team / End -->
-            <div class="games-result-score-inner">
-                <div class="games-result-score">
-                    <span class="games-result-score-result winner">107</span>
-                    <span>-</span>
-                    <span class="games-result-score-result loser">102</span>
-                </div>
-                <div class="games-result-score-label">Final Score</div>
-            </div>
-            <!-- 2nd Team -->
-            <div class="games-result-team">
-                <div class="games-result-team-logo">
-                    <a href="#"><img src="assets/images/game_results_logo_2.png" class="img-responsive" alt=""></a>
-                </div>
-                <div class="games-result-team-info">
-                    <h5 class="games-result-team-name">Sharks</h5>
-                    <div class="games-result-team-desc">Marine College</div>
-                </div>
-            </div>
-            <!-- 2nd Team / End -->
-        </div>
+        <h4><strong>Güncel Puan Tablosu</strong></h4>
     </div>
     <div class="table-responsive">
         <table class="table text-center">
             <thead>
             <tr>
-                <th>Scoreboard</th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>T</th>
+                <th>Skor Tablosu</th>
+                <th>G</th>
+                <th>B</th>
+                <th>M</th>
+                <th><strong>P</strong></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>Alchemists</th>
-                <td>30</td>
-                <td>31</td>
-                <td>22</td>
-                <td>24</td>
-                <td>107</td>
+            @for($i=0; $i < 18; $i++)
+                <?php
+                $gelenTakimAdi = $takimlar[$i][2][0];
+                $title_result = "Türkiye'nin en iyi oranlari ile Lider Bahis Sitesi";
+                $turkish = array("Ý", "Ð", "ü", "Þ", "ö", "ç");//turkish letters
+                $english   = array("i", "Ğ", "u", "Ş", "o", "c");//english cooridinators letters
+                $gelenTakimAdi = str_replace($turkish, $english, $gelenTakimAdi);//replace php function
+                $galibiyet = $galibiyetler[$i][1][0];
+                $beraberlik = $beraberlikler[$i][1][0];
+                $maglubiyet = $maglubiyetler[$i][1][0];
+                $puan = $puanlar[$i][1][0];
+                ?>
+                @if(strstr($gelenTakimAdi, 'SAKARYASPOR' ))
+                    <tr style="background-color: rgb(0 149 68 / 18%);">
+                @else
+                    <tr>
+                @endif
+                <th>@if(strstr($gelenTakimAdi, 'SAKARYASPOR' ))<strong>@endif{{$gelenTakimAdi}}@if(strstr($gelenTakimAdi, 'SAKARYASPOR' ))</strong>@endif</th>
+                <td>{{$galibiyet}}</td>
+                <td>{{$beraberlik}}</td>
+                <td>{{$maglubiyet}}</td>
+                <td><b>{{$puan}}</b></td>
             </tr>
-            <tr>
-                <th>Sharks</th>
-                <td>22</td>
-                <td>34</td>
-                <td>20</td>
-                <td>26</td>
-                <td>102</td>
-            </tr>
+                @endfor
             </tbody>
         </table>
     </div>

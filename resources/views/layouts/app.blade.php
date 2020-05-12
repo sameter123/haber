@@ -475,4 +475,5 @@
 <script src="{{asset('/public/assets/owl-carousel/owl.carousel.min.js')}}" type="text/javascript"></script>
 <!-- custom js -->
 <script src="{{asset('/public/assets/js/custom.js')}}" type="text/javascript"></script>
+@yield('js')
 </body>
