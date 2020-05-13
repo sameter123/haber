@@ -125,7 +125,7 @@
                                                                 <input type="file" id="account-upload" name="icon"
                                                                        hidden>
                                                                 <button class="btn btn-sm btn-outline-warning ml-50">
-                                                                    <Sil></Sil>
+                                                                    Sil
                                                                 </button>
                                                             </div>
                                                             <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
