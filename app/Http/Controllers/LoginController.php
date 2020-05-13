@@ -52,10 +52,14 @@ class LoginController extends Controller
     public function register_post(Request $request)
     {
         request()->validate([
+            'name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
         ], [
+            'name.required' => 'Adınız gereklidir',
+            'last_name.required' => 'Soyadınız gereklidir.',
             'email.required' => 'E-posta gereklidir.',
             'email.email' => 'Lütfen geçerli bir e-posta adresi girin.',
             'email.unique' => 'Böyle bir e-posta zaten var',
@@ -76,8 +80,6 @@ class LoginController extends Controller
             'email'     => $request->email,
             'password'  => $request->password,
         );
-        $settings = DB::table('settings')->first();
-        $email = $settings->email;
         if (Auth::attempt($userdata)) {
             return Redirect::to('/panel');
         } else {

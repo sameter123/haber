@@ -80,47 +80,75 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="inputName" name="name" class="form-control" placeholder="Ad" required>
+                                                            <input type="text" id="inputName" name="name" class="form-control" placeholder="Ad" value="{{ old('name') }}" required>
                                                             <label for="inputName">Adınız</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-label-group">
-                                                            <input type="text" id="inputLast_name" name="last_name" class="form-control" placeholder="Soyad" required>
-                                                            <label for="inputName">Soyadınız</label>
+                                                            <input type="text" id="inputLast_name" name="last_name" class="form-control" value="{{ old('last_name') }}" placeholder="Soyad" required>
+                                                            <label for="inputLast_Name">Soyadınız</label>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-label-group">
-                                                    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                                                    <input type="tel" id="inputTelefon" name="telefon" class="form-control" value="{{ old('telefon') }}" placeholder="Telefon">
+                                                    <label for="inputTelefon">Telefonunuz</label>
+                                                </div>
+
+                                                <div class="form-label-group">
+                                                    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
                                                     <label for="inputEmail">E-postanız</label>
                                                 </div>
                                                 <div class="form-label-group">
-                                                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
+                                                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Şifre" required min="6">
                                                     <label for="inputPassword">Şifreniz</label>
                                                 </div>
                                                 <div class="form-label-group">
-                                                    <input name="password_confirmation" type="password" id="inputConfPassword" class="form-control" placeholder="Şifre Tekrarı" required>
+                                                    <input name="password_confirmation" type="password" id="inputConfPassword" min="6" class="form-control" placeholder="Şifre Tekrarı" required>
                                                     <label for="inputConfPassword">Şifrenizi Tekrarlayın</label>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <div class="col-12">
+                                                    <div class="col-12" style="display: inline-flex;">
                                                         <fieldset class="checkbox">
                                                             <div class="vs-checkbox-con vs-checkbox-primary">
-                                                                <input type="checkbox" checked>
+                                                                <input name="kabul" type="checkbox" required {{ old('kabul') ? 'checked' : '' }}>
                                                                 <span class="vs-checkbox">
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check"></i>
                                                                         </span>
                                                                     </span>
-                                                                <span class=""> I accept the terms & conditions.</span>
+                                                                <span class=""></span>
                                                             </div>
                                                         </fieldset>
+                                                        <a class="vs-checkbox-con" href="#" data-toggle="modal" data-target="#uyelik-kvkk">Üyelik Sözleşmesin okudum ve kabul ediyorum</a>
                                                     </div>
                                                 </div>
-                                                <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                                                <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
+                                                <!-- Modal -->
+                                                @if(DB::table('sayfalar')->where('alan', '1')->count() > 0)
+                                                    @php $sayfa = DB::table('sayfalar')->where('alan', '1')->first() @endphp
+                                                <div class="modal fade" id="uyelik-kvkk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">{{$sayfa->title}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                @php echo $sayfa->text; @endphp
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                <a href="/giris" class="btn btn-outline-primary float-left btn-inline mb-50">Giriş Yap</a>
+                                                <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Kayıt Ol</button>
                                             </form>
                                         </div>
                                     </div>
