@@ -33,7 +33,8 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                     class="feather icon-settings"></i></button>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a
-                                    class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a>
+                                    class="dropdown-item" href="#">Email</a><a class="dropdown-item"
+                                                                               href="#">Calendar</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +43,7 @@
             <div class="content-body">
                 <!-- account setting page start -->
 
-                <section >
+                <section>
 
                     <div class="row">
                         <!-- left menu section -->
@@ -52,7 +53,7 @@
                                     <a class="nav-link d-flex py-75 active" id="account-pill-general"
                                        data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
                                         <i class="feather icon-globe mr-50 font-medium-3"></i>
-                                        General
+                                        Genel Ayarlar
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -66,14 +67,14 @@
                                     <a class="nav-link d-flex py-75" id="account-pill-info" data-toggle="pill"
                                        href="#account-vertical-info" aria-expanded="false">
                                         <i class="feather icon-info mr-50 font-medium-3"></i>
-                                        Info
+                                        Hakkında
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill"
                                        href="#account-vertical-social" aria-expanded="false">
                                         <i class="feather icon-camera mr-50 font-medium-3"></i>
-                                        Social links
+                                        Sosyal Medya
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -103,57 +104,68 @@
                                             <div role="tabpanel" class="tab-pane active"
                                                  id="account-vertical-general"
                                                  aria-labelledby="account-pill-general" aria-expanded="true">
-                                                <div class="media">
-                                                    <a href="javascript: void(0);">
-                                                        <img src="{{asset('public/app-assets/images/portrait/small/avatar-s-12.jpg')}}"
-                                                             class="rounded mr-75" alt="profile image" height="64"
-                                                             width="64">
-                                                    </a>
-                                                    <div class="media-body mt-75">
-                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
-                                                                   for="account-upload">Upload new Logo</label>
-                                                            <input type="file" id="account-upload" name="icon" hidden>
-                                                            <button class="btn btn-sm btn-outline-warning ml-50">
-                                                                Delete
-                                                            </button>
-                                                        </div>
-                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
-                                                                PNG. Max
-                                                                size of
-                                                                800kB</small></p>
-                                                    </div>
-                                                    <a href="javascript: void(0);">
-                                                        <img src="{{asset('public/app-assets/images/portrait/small/avatar-s-12.jpg')}}"
-                                                             class="rounded mr-75" alt="profile image" height="64"
-                                                             width="64">
-                                                    </a>
-                                                    <div class="media-body mt-75">
-                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
-                                                                   for="account-upload">Upload new Favicon</label>
-                                                            <input type="file" id="account-upload" name="favicon" hidden>
-                                                            <button class="btn btn-sm btn-outline-warning ml-50">
-                                                                Delete
-                                                            </button>
-                                                        </div>
-                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
-                                                                PNG. Max
-                                                                size of
-                                                                800kB</small></p>
-                                                    </div>
-                                                </div>
+
 
                                                 <hr>
-                                                <form method="POST" >
+                                                <form method="POST">
                                                     {{csrf_field()}}
+                                                    <div class="media">
+                                                        <a href="javascript: void(0);">
+                                                            <img
+                                                                src="{{asset('public/app-assets/images/portrait/small/avatar-s-12.jpg')}}"
+                                                                class="rounded mr-75" alt="profile image" height="64"
+                                                                width="64">
+                                                        </a>
+                                                        <div class="media-body mt-75">
+                                                            <div
+                                                                class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                                <label
+                                                                    class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                                    for="account-upload">Yeni Logo Seçiniz</label>
+                                                                <input type="file" id="account-upload" name="icon"
+                                                                       hidden>
+                                                                <button class="btn btn-sm btn-outline-warning ml-50">
+                                                                    <Sil></Sil>
+                                                                </button>
+                                                            </div>
+                                                            <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                                                    PNG. Max
+                                                                    size of
+                                                                    800kB</small></p>
+                                                        </div>
+                                                        <a href="javascript: void(0);">
+                                                            <img
+                                                                src="{{asset('public/app-assets/images/portrait/small/avatar-s-12.jpg')}}"
+                                                                class="rounded mr-75" alt="profile image" height="64"
+                                                                width="64">
+                                                        </a>
+                                                        <div class="media-body mt-75">
+                                                            <div
+                                                                class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                                <label
+                                                                    class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                                    for="account-upload">Yeni Faviogo Seçiniz</label>
+                                                                <input type="file" name="favicon"
+                                                                       hidden>
+                                                                <button class="btn btn-sm btn-outline-warning ml-50">
+                                                                    Sil
+                                                                </button>
+                                                            </div>
+                                                            <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                                                    PNG. Max
+                                                                    size of
+                                                                    800kB</small></p>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-username">Site Name</label>
+                                                                    <label for="account-username">Site Adı</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="site_name" value="{{$settings->site_name}}"
+                                                                           name="site_name"
+                                                                           value="{{$settings->site_name}}"
                                                                            placeholder="Site Name Giriniz ...">
                                                                 </div>
                                                             </div>
@@ -161,9 +173,10 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="controls">
-                                                                    <label for="account-name">Description</label>
+                                                                    <label for="account-name">Sİte Açıklama</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="site_description" value="{{$settings->site_description}}"
+                                                                           name="site_description"
+                                                                           value="{{$settings->site_description}}"
                                                                            placeholder="Description Giriniz ...">
                                                                 </div>
                                                             </div>
@@ -173,7 +186,8 @@
                                                                 <div class="controls">
                                                                     <label for="account-e-mail">Footer Text</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="footer_text" value="{{$settings->footer_text}}"
+                                                                           name="footer_text"
+                                                                           value="{{$settings->footer_text}}"
                                                                            placeholder="Footer Text Giriniz ...">
                                                                 </div>
                                                             </div>
@@ -183,7 +197,8 @@
                                                                 <div class="controls">
                                                                     <label for="account-e-mail">Meta Tag</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="meta_tag" value="{{$settings->meta_tag}}"
+                                                                           name="meta_tag"
+                                                                           value="{{$settings->meta_tag}}"
                                                                            placeholder="Meta Tag Giriniz ...">
                                                                 </div>
                                                             </div>
@@ -193,12 +208,24 @@
                                                                 <div class="controls">
                                                                     <label for="account-e-mail">Analytics</label>
                                                                     <input type="text" class="form-control"
-                                                                           name="analytics" value="{{$settings->analytics}}"
+                                                                           name="analytics"
+                                                                           value="{{$settings->analytics}}"
                                                                            placeholder="Analytics Giriniz ...">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-e-mail">Robots</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="robots" value="{{$settings->robots}}"
+                                                                           placeholder="Robots Giriniz ...">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <button type="submit" name="post"
                                                                     class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">
                                                                 Save
@@ -258,7 +285,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <div
+                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <button type="submit" name="post"
                                                                     class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">
                                                                 Save
@@ -273,66 +301,60 @@
                                             </div>
                                             <div class="tab-pane fade" id="account-vertical-info" role="tabpanel"
                                                  aria-labelledby="account-pill-info" aria-expanded="false">
-                                                <form novalidate>
+                                                <form method="POST">
+                                                    {{csrf_field()}}
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Phone Number 1</label>
+                                                                <label for="account-website">Telefon Numarası 1</label>
                                                                 <input type="text" class="form-control"
-                                                                       name="phone_1" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       name="tel_1" id="account-website"
+                                                                       placeholder="Telefon Numarası 1 Giriniz ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Phone Number 2</label>
+                                                                <label for="account-website">Telefon Numarası 2</label>
                                                                 <input type="text" class="form-control"
-                                                                       name="phone_2" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       name="tel_2" id="account-website"
+                                                                       placeholder="Telefon Numarası 2 Giriniz ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Adress 1</label>
+                                                                <label for="account-website">Adres 1</label>
                                                                 <input type="text" class="form-control"
-                                                                       name="adress_1" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       name="adress" id="account-website"
+                                                                       placeholder="Adress Giriniz ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Adress 2</label>
+                                                                <label for="account-website">Adress Iframe</label>
                                                                 <input type="text" class="form-control"
-                                                                       name="adress_2" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       name="adress_iframe" id="account-website"
+                                                                       placeholder="Adress Iframe Giriniz ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Email 1</label>
+                                                                <label for="account-website">Mail Adresi 1</label>
                                                                 <input type="text" class="form-control"
                                                                        name="email_1" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       placeholder="Mail Adresi 1 Giriniz ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="account-website">Email 2</label>
+                                                                <label for="account-website">Mail Adresi 2</label>
                                                                 <input type="text" class="form-control"
                                                                        name="email_2" id="account-website"
-                                                                       placeholder="Website address">
+                                                                       placeholder="Mail Adresi 2 Giriniz ...">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="account-website">Website</label>
-                                                                <input type="text" class="form-control"
-                                                                       id="account-website"
-                                                                       placeholder="Website address">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                            <button type="submit" name="post"
+                                                        <div
+                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                            <button type="submit" name="POST"
                                                                     class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">
                                                                 Save
                                                                 changes
@@ -346,7 +368,7 @@
                                             </div>
                                             <div class="tab-pane fade " id="account-vertical-social" role="tabpanel"
                                                  aria-labelledby="account-pill-social" aria-expanded="false">
-                                                <form method="POST" >
+                                                <form method="POST">
                                                     {{csrf_field()}}
                                                     <div class="row">
                                                         <div class="col-12">
@@ -389,15 +411,8 @@
                                                                        placeholder="Add link">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="account-quora">Github</label>
-                                                                <input type="text" id="account-quora"
-                                                                       class="form-control" name="github"
-                                                                       placeholder="Add link">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <div
+                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <button type="submit" name="post"
                                                                     class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">
                                                                 Save
@@ -437,7 +452,8 @@
                                                         <h6>You are connected to Instagram.</h6>
                                                         <span>Johndoe@gmail.com</span>
                                                     </div>
-                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                    <div
+                                                        class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit" name="post"
                                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes
@@ -492,7 +508,8 @@
                                                                    checked id="accountSwitch4">
                                                             <label class="custom-control-label mr-1"
                                                                    for="accountSwitch4"></label>
-                                                            <span class="switch-label w-100">News and announcements</span>
+                                                            <span
+                                                                class="switch-label w-100">News and announcements</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 mb-1">
@@ -501,7 +518,8 @@
                                                                    id="accountSwitch5">
                                                             <label class="custom-control-label mr-1"
                                                                    for="accountSwitch5"></label>
-                                                            <span class="switch-label w-100">Weekly product updates</span>
+                                                            <span
+                                                                class="switch-label w-100">Weekly product updates</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 mb-1">
@@ -513,7 +531,8 @@
                                                             <span class="switch-label w-100">Weekly blog digest</span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                    <div
+                                                        class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit"
                                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes

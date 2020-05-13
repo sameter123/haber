@@ -252,7 +252,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="/admin/anasayfa/"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Anasayfa</span></a>
+            <li class=" nav-item"><a href="/admin"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Anasayfa</span></a>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Ayarlar</span></a>
                 <ul class="menu-content">

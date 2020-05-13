@@ -116,12 +116,12 @@ class AdminController extends Controller
             $adress = $settings->adress ;
         }
 
-        if(isset($request->adress_iframe )) {
+      /* if(isset($request->adress_iframe )) {
             $adress_iframe	 = $request->adress_iframe	 ;
         } else {
             $adress_iframe	 = $settings->adress_iframe	 ;
         }
-
+*/
         if(isset($request->favicon )) {
             $favicon = $request->favicon ;
         } else {
@@ -152,9 +152,10 @@ class AdminController extends Controller
             'tel_1' => $tel_1,
             'tel_2' => $tel_2,
             'adress' => $adress,
-            'adress_iframe	' => $adress_iframe	,
+           // 'adress_iframe	' => $adress_iframe	,
             'favicon' => $favicon,
             'icon' => $icon,
+
 
 
 
