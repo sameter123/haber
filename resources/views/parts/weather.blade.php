@@ -6,6 +6,17 @@ setlocale(LC_TIME, "turkish"); //başka bir dil içinse burada belirteceksin.
 setlocale(LC_ALL,'turkish'); //başka bir dil içinse burada belirteceksin.
 ?>
 <!-- START WEATHER -->
+<style>
+    .weather-icon i img {
+        background-color: #eb0254;
+        border-radius: 100%;
+    }
+    .list-group-item i img {
+        background-color: #eb0254;
+        border-radius: 100%;
+        width: 30px;
+    }
+</style>
 <div class="weather-wrapper">
     <div class="row thm-margin">
         <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3 weather-week thm-padding">
@@ -16,7 +27,7 @@ setlocale(LC_ALL,'turkish'); //başka bir dil içinse burada belirteceksin.
                     $tarih = gmdate("Y-m-d H:i:s", $gelen->dt);
                     ?>
                 <a href="#" class="list-group-item @if($i == 0) active @endif">
-                    <i class="flaticon-cloudy"></i>
+                    <i><img src="http://openweathermap.org/img/wn/{{$gelen->weather[0]->icon}}.png"></i>
                     <div>{{iconv('latin5','utf-8',strftime('%a',strtotime($tarih)))}},{{substr($gelen->temp->max, 0, 2)}}°C</div>
                 </a>
                 @endfor

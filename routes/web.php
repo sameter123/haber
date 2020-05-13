@@ -21,9 +21,11 @@ Route::post('/giris', 'LoginController@login_post');
 
 
 Auth::routes();
-
-Route::get('admin/anasayfa', 'AdminController@index');
-Route::get('admin/ayarlar', 'AdminController@settings');
-Route::post('admin/ayarlar', 'AdminController@settings_post');
 Route::get('/panel', 'AdminController@index')->middleware('auth');
+Route::group(['prefix' => '/admin'], function() {
+    Route::get('/anasayfa', 'AdminController@index');
+    Route::get('/ayarlar', 'AdminController@settings');
+    Route::post('/ayarlar', 'AdminController@settings_post');
+
+});
 
