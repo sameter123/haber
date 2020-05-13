@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="I Feel Code Haber Sistemleri - Giriş">
+    <meta name="description" content="I Feel Code Haber Sistemleri - Kayıt">
     <meta name="author" content="I Feel Code">
-    <title>Giriş Yap</title>
+    <title>Kayıt Ol</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/vendors/css/vendors.min.css')}}">
@@ -52,73 +52,76 @@
                     <div class="card bg-authentication rounded-0 mb-0">
                         <div class="row m-0">
                             <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-                                <img src="{{asset('/public/app-assets/images/pages/login.png')}}" alt="branding logo">
+                                <img src="{{asset('/public/app-assets/images/pages/register.jpg')}}" alt="branding logo">
                             </div>
                             <div class="col-lg-6 col-12 p-0">
-                                <div class="card rounded-0 mb-0 px-2">
-                                    <div class="card-header pb-1">
+                                <div class="card rounded-0 mb-0 p-2">
+                                    <div class="card-header pt-50 pb-1">
                                         <div class="card-title">
-                                            <h4 class="mb-0">Giriş Yap</h4>
+                                            <h4 class="mb-0">Hesap Oluştur</h4>
                                         </div>
                                     </div>
-                                    <p class="px-2">Merhaba, Lütfen giriş yapın</p>
+                                    <p class="px-2">Lütfen bilgilerinizi doldurarak kayıt olunuz.</p>
                                     <div class="card-content">
-                                        <div class="card-body pt-1">
-
+                                        @foreach ($errors->all(':message') as $input_error)
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <i class="feather icon-alert-circle mr-1 align-middle"></i>
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true"><i class="feather icon-x-circle"></i></span>
+                                                        </button>
+                                                        <span><strong>{{ $input_error }}</strong></span>
+                                                    </div>
+                                                </div>
+                                        @endforeach
+                                        <div class="card-body pt-0">
                                             <form action="" method="post">
                                                 @csrf
-                                                <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                    <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="user-name" placeholder="E-posta" required autocomplete="email" autofocus>
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-mail"></i>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="inputName" name="name" class="form-control" placeholder="Ad" required>
+                                                            <label for="inputName">Adınız</label>
+                                                        </div>
                                                     </div>
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                    <label for="user-name">E-posta</label>
-                                                </fieldset>
+                                                    <div class="col-md-6">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="inputLast_name" name="last_name" class="form-control" placeholder="Soyad" required>
+                                                            <label for="inputName">Soyadınız</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                <fieldset class="form-label-group position-relative has-icon-left">
-                                                    <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="user-password" placeholder="Şifre" required autocomplete="current-password">
-                                                    <div class="form-control-position">
-                                                        <i class="feather icon-lock"></i>
-                                                    </div>
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                    <label for="user-password">Şifre</label>
-                                                </fieldset>
-                                                <div class="form-group d-flex justify-content-between align-items-center">
-                                                    <div class="text-left">
+                                                <div class="form-label-group">
+                                                    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required>
+                                                    <label for="inputEmail">E-postanız</label>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
+                                                    <label for="inputPassword">Şifreniz</label>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <input name="password_confirmation" type="password" id="inputConfPassword" class="form-control" placeholder="Şifre Tekrarı" required>
+                                                    <label for="inputConfPassword">Şifrenizi Tekrarlayın</label>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-12">
                                                         <fieldset class="checkbox">
                                                             <div class="vs-checkbox-con vs-checkbox-primary">
-                                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                                <input type="checkbox" checked>
                                                                 <span class="vs-checkbox">
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check"></i>
                                                                         </span>
                                                                     </span>
-                                                                <span class="">Beni Hatırla</span>
+                                                                <span class=""> I accept the terms & conditions.</span>
                                                             </div>
                                                         </fieldset>
                                                     </div>
-                                                    <div class="text-right"><a href="sifremi-unuttum" class="card-link">Şifremi Unuttum</a></div>
                                                 </div>
-                                                <a href="kayit-ol" class="btn btn-outline-primary float-left btn-inline">Kayıt Ol</a>
-                                                <button type="submit" class="btn btn-primary float-right btn-inline">Giriş Yap</button>
+                                                <a href="auth-login.html" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
+                                                <button type="submit" class="btn btn-primary float-right btn-inline mb-50">Register</a>
                                             </form>
-                                        </div>
-                                    </div>
-                                    <div class="login-footer">
-                                        <div class="divider">
-                                            <div class="divider-text">{{$settings->site_name}}</div>
-                                        </div>
-                                        <div class="footer-btn d-inline">
-
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="tr" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
 <head>
@@ -35,13 +35,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/css/pages/dashboard-analytics.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/css/pages/card-analytics.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/css/plugins/tour/tour.css')}}">
     <!-- END: Page CSS-->
-
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/app-assets/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
-
+    @yield('css')
 </head>
 <!-- END: Head-->
 
@@ -287,7 +285,6 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="{{asset('public/app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
 <script src="{{asset('public/app-assets/vendors/js/extensions/tether.min.js')}}"></script>
-<script src="{{asset('public/app-assets/vendors/js/extensions/shepherd.min.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
@@ -299,7 +296,7 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('public/app-assets/js/scripts/pages/dashboard-analytics.js')}}"></script>
 <!-- END: Page JS-->
-
+@yield('js')
 </body>
 <!-- END: Body-->
 
