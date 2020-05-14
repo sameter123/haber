@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 13 May 2020, 07:40:25
--- Sunucu sürümü: 10.4.10-MariaDB
--- PHP Sürümü: 7.4.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 14, 2020 at 08:55 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Veritabanı: `haber`
+-- Database: `haber`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `migrations`
+-- Table structure for table `migrations`
 --
 
 DROP TABLE IF EXISTS `migrations`;
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Tablo döküm verisi `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -64,7 +64,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `sayfalar`
+-- Table structure for table `sayfalar`
 --
 
 DROP TABLE IF EXISTS `sayfalar`;
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `sayfalar` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `sayfalar`
+-- Dumping data for table `sayfalar`
 --
 
 INSERT INTO `sayfalar` (`id`, `title`, `title_2`, `text`, `alan`) VALUES
@@ -87,7 +87,7 @@ INSERT INTO `sayfalar` (`id`, `title`, `title_2`, `text`, `alan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `settings`
+-- Table structure for table `settings`
 --
 
 DROP TABLE IF EXISTS `settings`;
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Tablo döküm verisi `settings`
+-- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`id`, `site_name`, `site_description`, `footer_text`, `icon`, `favicon`, `meta_tag`, `analytics`, `tel_1`, `tel_2`, `email_1`, `email_2`, `facebook`, `twitter`, `youtube`, `linkedin`, `instagram`, `adress`, `adress_iframe`, `robots`, `created_at`, `updated_at`) VALUES
@@ -127,7 +127,7 @@ INSERT INTO `settings` (`id`, `site_name`, `site_description`, `footer_text`, `i
 -- --------------------------------------------------------
 
 --
--- Tablo için tablo yapısı `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -138,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `telefon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -147,11 +148,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Tablo döküm verisi `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `telefon`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Samet Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, NULL, '$2y$10$TadssjLX6nLEgQfLHS.ISugvH6nECkvLrOPniZkoF49IjGS1ejxKO', 'wTyO7w0qho2muREWSOZ4gQP2Pe2BgZ1LPokmp6ePobB4i4OtjE6H0rnyHxJm', '2020-05-10 21:59:44', '2020-05-10 21:59:44');
+INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `telefon`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Samet Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, NULL, '', '$2y$10$TadssjLX6nLEgQfLHS.ISugvH6nECkvLrOPniZkoF49IjGS1ejxKO', 'wTyO7w0qho2muREWSOZ4gQP2Pe2BgZ1LPokmp6ePobB4i4OtjE6H0rnyHxJm', '2020-05-10 21:59:44', '2020-05-10 21:59:44');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
