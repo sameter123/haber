@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,6 +11,27 @@ class AdminController extends Controller
     public function index()
     {
         return view('backend.home');
+    }
+
+
+
+    public function  uyekayit()
+    {
+        return view('backend.uyekayit');
+    }
+
+    public function uyekayit_post(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'telefon' => $request->telefon,
+            'email' => $request->email,
+            'avatar' => $request->avatar,
+            'password' => bcrypt(request()->password),
+
+        ]);
+        return view('backend.uyekayit');
     }
 
     public function settings()
