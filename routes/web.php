@@ -32,6 +32,7 @@ Route::group(['prefix' => '/admin'], function() {
     Route::post('/ayarlar', 'AdminController@settings_post');
     Route::get('/uye-ekle', 'AdminController@uyekayit');
     Route::post('/uye-ekle', 'AdminController@uyekayit_post');
+    Route::get('/uye-listesi', 'AdminController@uyelistesi');
 
 });
 

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class AdminController extends Controller
 {
     public function index()
@@ -186,6 +187,12 @@ class AdminController extends Controller
 
 
         return back()->with('success', 'Site bilgileri başarıyla güncellendi.');
+    }
+
+    public function  uyelistesi()
+    {
+        $users=User::all();
+        return view('backend.uyelistesi')->with('users',$users);
     }
 
 
