@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $table = 'users';
     protected $fillable = [
         'name', 'last_name', 'email', 'password', 'avatar','telefon'
@@ -39,6 +40,10 @@ class User extends Authenticatable
     ];
 
     public static function create(array $array)
+    {
+    }
+
+    public static function findOrFail($id)
     {
     }
 }

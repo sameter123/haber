@@ -195,5 +195,40 @@ class AdminController extends Controller
         return view('backend.uyelistesi')->with('users',$users);
     }
 
+    public function uye_duzenle($ne)
+    {
+        return view('backend.uye-duzenle')->with('id', $ne);
+    }
+
+    public function uye_duzenle_post(Request $request)
+    {
+        request()->validate([
+            'name' => 'required|min:2|max:50',
+            'last_name' => 'required|min:2|max:50',
+        ], [
+            'name.required' => 'İsminiz gereklidir.',
+            'name.min' => 'Adınız en az 2 karakter olmalıdır.',
+            'name.max' => 'Adınız en fazla 50 karakter olabilir.',
+            'last_name.required' => 'Kullanıcı adı gereklidir.',
+            'last_name.min' => 'Kullanıcı adınız en az 2 karakter olmalıdır.',
+            'last_name.max' => 'Kullanıcı adınız en fazla 50 karakter olabilir.',
+            'email.required' => 'E-posta gereklidir.',
+            'email.email' => 'Lütfen geçerli bir e-posta adresi girin, örneğin info@ifeelcode.com gibi.',
+        ]);
+        DB::table('users')->where('id', $request->id)->update([
+            'name' => $request->input('name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'telefon' => $request->input('telefon'),
+            'avatar' => $request->input('avatar'),
+        ]);
+        if($request->password != '') {
+            DB::table('users')->where('id', $request->id)->update([
+                'password' => bcrypt(request()->password),
+            ]);
+        }
+        return redirect('admin/uye-listesi')->with('success', 'Üye başarıyla düzenlendi.');
+    }
+
 
 }

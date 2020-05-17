@@ -1,5 +1,18 @@
 @extends('backend.layouts.master')
 @section('content')
+    <?php
+    if(isset($_GET['uye']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
+        $uye_id = $_GET['uye'];
+        $token = $_GET['token'];
+        if(Session::token() == $token) {
+            DB::table('users')->where('id', $uye_id)->delete();
+            header("Location: ?okey");
+            die();
+        } else {
+            header("Location: ?notOkey");
+        }
+    }
+?>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -65,19 +78,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $row)
+                            @foreach($users as $user)
                             <tr>
                                 <td></td>
-                                <td class="product-img"><img src="../../../app-assets/images/elements/apple-watch.png" alt="Img placeholder">
+                                <td class="product-img"><img src="{{asset('public/app-assets/images/portrait/small/avatar-s-18.jpg')}}" height="90" width="90">
                                 </td>
-                                <td {{ $row ->id }}</td>
-                                <td {{ $row ->name }}</td>
-                                <td {{ $row ->last_name }}</td>
-                                <td {{ $row ->telefon }}</td>
-                                <td {{ $row ->email }}</td>
+                                <td> {{ $user ->id }} </td>
+                                <td> {{ $user ->name }}</td>
+                                <td> {{ $user ->last_name }}</td>
+                                <td> {{ $user ->telefon }}</td>
+                                <td> {{ $user ->email }}</td>
                                 <td class="product-action">
-                                    <button href="" class="action-edit"><i class="feather icon-edit"></i></button>
-                                    <button class="action-delete"><i class="feather icon-trash"></i></button>
+                                    <a href="/haber/admin/uye-duzenle/{{$user->email}}" class="action-edit"><i class="feather icon-edit"></i></a>
+                                    <a href="?uye={{$user->id}}&sil&token={{ csrf_token() }}"><i class="feather icon-trash"></i></a>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -20,9 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/uye-duzenle.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +145,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../askon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -177,7 +179,9 @@
       <workItem from="1589429193217" duration="3606000" />
       <workItem from="1589479779962" duration="8204000" />
       <workItem from="1589502221067" duration="2337000" />
-      <workItem from="1589652293758" duration="5277000" />
+      <workItem from="1589652293758" duration="9975000" />
+      <workItem from="1589671415963" duration="1115000" />
+      <workItem from="1589709389316" duration="1932000" />
     </task>
     <servers />
   </component>
@@ -205,13 +209,17 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1589655982835" />
-    <state x="635" y="358" key="NewPhpFileDialog" timestamp="1589652976098">
+    <state x="635" y="358" key="NewPhpFileDialog" timestamp="1589710841228">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="635" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1589652976098" />
+    <state x="635" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1589710841228" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1589350892466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589350892466" />
+    <state x="456" y="198" key="run.anything.popup" timestamp="1589672530855">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="456" y="198" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1589672530855" />
   </component>
 </project>
