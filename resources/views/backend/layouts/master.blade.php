@@ -250,22 +250,22 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="/admin"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Anasayfa</span></a>
+            <li class=" nav-item"><a href="/haber/admin"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Email">Anasayfa</span></a>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="User">Ayarlar</span></a>
                 <ul class="menu-content">
-                    <li><a href="/admin/ayarlar"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Site Ayarlari</span></a>
+                    <li><a href="/haber/admin/ayarlar"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Site Ayarlari</span></a>
                     </li>
 
                 </ul>
             </li>
             <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Üye İşlemleri</span></a>
                 <ul class="menu-content">
-                    <li><a href="/admin/uye-kayit"><i class="feather icon-user-plus"></i><span class="menu-item" data-i18n="List">Üye Ekle</span></a>
+                    <li><a href="/haber/admin/uye-ekle"><i class="feather icon-user-plus"></i><span class="menu-item" data-i18n="List">Üye Ekle</span></a>
                     </li>
-                    <li><a href="/admin/ayarlar"><i class="feather icon-user-check"></i><span class="menu-item" data-i18n="List">Üye Düzenle</span></a>
+                    <li><a href="/haber/admin/uye-duzenle"><i class="feather icon-user-check"></i><span class="menu-item" data-i18n="List">Üye Düzenle</span></a>
                     </li>
-                    <li><a href="/admin/ayarlar"><i class="feather icon-users"></i><span class="menu-item" data-i18n="List">Üye Listeleme</span></a>
+                    <li><a href="/haber/admin/uye-listesi"><i class="feather icon-users"></i><span class="menu-item" data-i18n="List">Üye Listeleme</span></a>
                     </li>
                     <li><a href="/admin/ayarlar"><i class="feather icon-eye"></i><span class="menu-item" data-i18n="List">Üye Görüntüleme</span></a>
                     </li>
