@@ -263,8 +263,6 @@
                 <ul class="menu-content">
                     <li><a href="/haber/admin/uye-ekle"><i class="feather icon-user-plus"></i><span class="menu-item" data-i18n="List">Üye Ekle</span></a>
                     </li>
-                    <li><a href="/haber/admin/uye-duzenle"><i class="feather icon-user-check"></i><span class="menu-item" data-i18n="List">Üye Düzenle</span></a>
-                    </li>
                     <li><a href="/haber/admin/uye-listesi"><i class="feather icon-users"></i><span class="menu-item" data-i18n="List">Üye Listeleme</span></a>
                     </li>
                     <li><a href="/admin/ayarlar"><i class="feather icon-eye"></i><span class="menu-item" data-i18n="List">Üye Görüntüleme</span></a>

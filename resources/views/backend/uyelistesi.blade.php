@@ -21,14 +21,14 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Thumb View</h2>
+                            <h2 class="content-header-title float-left mb-0">Üye Listesi</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                    <li class="breadcrumb-item"><a href="/haber/admin">Anasayfa</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Data List</a>
+                                    <li class="breadcrumb-item"><a href="#">Üye İşlemleri</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Thumb View
+                                    <li class="breadcrumb-item active">Üye Listeleme
                                     </li>
                                 </ol>
                             </div>
