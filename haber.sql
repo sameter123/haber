@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 14, 2020 at 08:55 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Anamakine: 127.0.0.1:3306
+-- Üretim Zamanı: 19 May 2020, 03:32:30
+-- Sunucu sürümü: 10.4.10-MariaDB
+-- PHP Sürümü: 7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `haber`
+-- Veritabanı: `haber`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Tablo için tablo yapısı `failed_jobs`
 --
 
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -42,7 +42,100 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Tablo için tablo yapısı `haberler`
+--
+
+DROP TABLE IF EXISTS `haberler`;
+CREATE TABLE IF NOT EXISTS `haberler` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text DEFAULT NULL,
+  `title_2` text DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `image` text NOT NULL,
+  `yazar` int(11) NOT NULL,
+  `kategori` int(11) NOT NULL DEFAULT 1,
+  `url` text NOT NULL,
+  `updated_at` datetime DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `haberler`
+--
+
+INSERT INTO `haberler` (`id`, `title`, `title_2`, `text`, `image`, `yazar`, `kategori`, `url`, `updated_at`, `created_at`) VALUES
+(1, 'Sahur yapıp yattı, oruçlu kalktı', 'Sahur yapıp yatan S.M.Ö. oruçlu kalkınca çok şaşırdı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '1.jpg', 1, 1, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(2, 'Sahur yapmadan yatınca susuz kaldı', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '2.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(3, 'Sahur yapmadan yatınca susuz kaldı 2', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '2.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(4, 'Sahur yapmadan yatınca susuz kaldı 3', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '2.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(5, 'Sahur yapmadan yatınca susuz kaldı 4', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '2.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(6, 'Sahur yapmadan yatınca susuz kaldı 5', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '2.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(7, 'Sahur yapmadan yatınca susuz kaldı 6', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '4.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26'),
+(8, 'Sahur yapmadan yatınca susuz kaldı 7', 'Sahur yapmadan yatan S.M.Ö. susuz kaldı, oruç tutarken zorlandı - sakarya haber', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at condimentum ex. Nullam nibh augue, vehicula sed diam sed, interdum iaculis diam. Curabitur mollis a risus vitae pulvinar. Sed quis turpis quam. Vivamus venenatis nisl purus, vitae ullamcorper dui pulvinar eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse consectetur quam in orci consectetur, id auctor dolor imperdiet. Aliquam est arcu, posuere a sem nec, congue egestas ante. Sed enim lorem, gravida sed fringilla eu, feugiat et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus faucibus tellus lorem, non venenatis dolor tristique ac. Quisque pulvinar sed purus vitae cursus. Ut tristique risus non massa faucibus ornare. Nulla tincidunt, leo ac facilisis sagittis, felis nisl luctus quam, non scelerisque nisl lacus porttitor tortor. Curabitur a venenatis orci. Nulla lectus nibh, rhoncus et erat in, accumsan tempus mauris.\r\n\r\nCurabitur leo tortor, faucibus sed ligula id, egestas rhoncus nulla. In condimentum sapien ac tempus vestibulum. Nullam eu mi ligula. Phasellus imperdiet ligula nec feugiat imperdiet. Curabitur molestie sapien convallis sagittis bibendum. Praesent sit amet urna in eros laoreet condimentum sagittis sit amet neque. Phasellus ultrices dolor sed elit bibendum, et semper nisl lacinia. Vivamus in fringilla sapien. Vestibulum rhoncus eros a tortor gravida, vitae dictum lacus consequat. Aliquam at tellus pellentesque, elementum justo et, mollis justo. Aenean venenatis quis orci ut faucibus. Nulla finibus orci sed mollis rhoncus. Suspendisse dignissim porta odio, maximus vehicula est facilisis eu. Curabitur eu purus libero. Donec lobortis urna ac purus rutrum ullamcorper. Mauris vel nunc ornare, vestibulum tellus sed, dictum nisl.\r\n\r\nSed risus felis, elementum sed urna at, ullamcorper mollis sem. Suspendisse blandit neque vitae sollicitudin pretium. Nunc suscipit feugiat leo eget ultrices. Maecenas in efficitur erat. Integer at lacinia turpis. Suspendisse a quam id nisi eleifend lobortis id in justo. Aliquam vel finibus velit. Fusce quis convallis ante, ut interdum lacus. Praesent blandit ultricies ante, in congue urna elementum eget. Integer suscipit est erat, et iaculis massa rutrum id. Fusce rutrum tempus arcu.\r\n\r\nFusce urna eros, maximus in posuere ut, maximus in lorem. Maecenas rutrum tellus velit, maximus elementum elit consequat sed. Morbi dignissim interdum odio quis viverra. Ut quam dui, condimentum a lectus in, vehicula rutrum erat. Donec fringilla placerat euismod. Nulla vitae est dolor. Mauris sollicitudin sodales tortor, sit amet fringilla diam efficitur ut. In pulvinar scelerisque finibus. Nunc pharetra eros quis odio commodo euismod.\r\n\r\nUt scelerisque rutrum quam porta auctor. Nullam pharetra ligula odio, nec varius dolor tempor vel. Donec rutrum nisi mauris, ut dapibus sapien cursus sed. Ut ac dapibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. In eu erat risus. In dui mauris, vestibulum eu elementum quis, dictum id risus. Suspendisse augue lectus, varius in porttitor vitae, luctus non purus. Ut euismod odio vitae ipsum volutpat ullamcorper. Proin pretium lacus quis mi tristique mattis.', '3.jpg', 1, 2, '', '2020-05-18 22:53:26', '2020-05-18 22:53:26');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `istatistik`
+--
+
+DROP TABLE IF EXISTS `istatistik`;
+CREATE TABLE IF NOT EXISTS `istatistik` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(255) DEFAULT NULL,
+  `date` datetime DEFAULT current_timestamp(),
+  `page` varchar(255) DEFAULT NULL,
+  `device` text DEFAULT NULL,
+  `browser` text DEFAULT NULL,
+  `ms` text DEFAULT NULL,
+  `tekil` int(11) DEFAULT 1,
+  `haber` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Tablo döküm verisi `istatistik`
+--
+
+INSERT INTO `istatistik` (`id`, `ip`, `date`, `page`, `device`, `browser`, `ms`, `tekil`, `haber`) VALUES
+(1, '127.0.0.1', '2020-05-19 04:10:06', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 1, 0),
+(2, '127.0.0.1', '2020-05-19 04:21:55', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(3, '127.0.0.1', '2020-05-19 04:22:01', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(4, '127.0.0.1', '2020-05-19 04:22:20', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(5, '127.0.0.1', '2020-05-19 04:23:02', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(6, '127.0.0.1', '2020-05-19 04:23:30', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `kategoriler`
+--
+
+DROP TABLE IF EXISTS `kategoriler`;
+CREATE TABLE IF NOT EXISTS `kategoriler` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `title_2` text NOT NULL,
+  `image` text NOT NULL,
+  `genel` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `kategoriler`
+--
+
+INSERT INTO `kategoriler` (`id`, `title`, `title_2`, `image`, `genel`) VALUES
+(1, 'Gündem', 'Gündeme dair haberleri bulabileceğiniz haber kategorisi', '', 0),
+(2, 'Magazin', 'Gündeme dair magazin haberleri', '', 1),
+(3, 'Siyaset', 'Siyaset haberleri kategorisi', '', 0),
+(4, 'Ekonomi', 'Ekonomi haberleri kategorisi', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `migrations`
 --
 
 DROP TABLE IF EXISTS `migrations`;
@@ -54,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Tablo döküm verisi `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -64,7 +157,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sayfalar`
+-- Tablo için tablo yapısı `sayfalar`
 --
 
 DROP TABLE IF EXISTS `sayfalar`;
@@ -78,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `sayfalar` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sayfalar`
+-- Tablo döküm verisi `sayfalar`
 --
 
 INSERT INTO `sayfalar` (`id`, `title`, `title_2`, `text`, `alan`) VALUES
@@ -87,7 +180,7 @@ INSERT INTO `sayfalar` (`id`, `title`, `title_2`, `text`, `alan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Tablo için tablo yapısı `settings`
 --
 
 DROP TABLE IF EXISTS `settings`;
@@ -118,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `settings`
+-- Tablo döküm verisi `settings`
 --
 
 INSERT INTO `settings` (`id`, `site_name`, `site_description`, `footer_text`, `icon`, `favicon`, `meta_tag`, `analytics`, `tel_1`, `tel_2`, `email_1`, `email_2`, `facebook`, `twitter`, `youtube`, `linkedin`, `instagram`, `adress`, `adress_iframe`, `robots`, `created_at`, `updated_at`) VALUES
@@ -127,7 +220,7 @@ INSERT INTO `settings` (`id`, `site_name`, `site_description`, `footer_text`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tablo için tablo yapısı `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -139,20 +232,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `telefon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `izin` int(11) DEFAULT 2,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`) USING HASH
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Tablo döküm verisi `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `telefon`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Samet Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, NULL, '', '$2y$10$TadssjLX6nLEgQfLHS.ISugvH6nECkvLrOPniZkoF49IjGS1ejxKO', 'wTyO7w0qho2muREWSOZ4gQP2Pe2BgZ1LPokmp6ePobB4i4OtjE6H0rnyHxJm', '2020-05-10 21:59:44', '2020-05-10 21:59:44');
+INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `telefon`, `avatar`, `izin`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Yönetici', 'Hesabı', 'sametmertozturk2@gmail.com', NULL, '5314534731', 'avatars/avatar.png', 1, '$2y$10$8WuKRAsxVwaENkQ/Rg8N..in9XRmGW6mVS4lNOgMDbZ96dgtUcuPu', NULL, '2020-05-14 20:58:38', '2020-05-14 20:58:38'),
+(3, 'S. Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, '5314534731', 'avatars/avatar.png', 1, '$2y$10$0PwAwKvFRe0qCcNntsli.uKScp7bsBFgFNgQAQamZMbKDWDMQNXYa', NULL, '2020-05-19 03:29:24', '2020-05-19 03:29:24');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
