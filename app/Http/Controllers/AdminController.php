@@ -14,27 +14,6 @@ class AdminController extends Controller
         return view('backend.home');
     }
 
-
-
-    public function  uyekayit()
-    {
-        return view('backend.uyekayit');
-    }
-
-    public function uyekayit_post(Request $request)
-    {
-        User::create([
-            'name' => $request->name,
-            'last_name' => $request->last_name,
-            'telefon' => $request->telefon,
-            'email' => $request->email,
-            'avatar' => $request->avatar,
-            'password' => bcrypt(request()->password),
-
-        ]);
-        return view('backend.uyekayit');
-    }
-
     public function settings()
     {
         return view('backend.settings');
@@ -139,12 +118,12 @@ class AdminController extends Controller
             $adress = $settings->adress ;
         }
 
-      /* if(isset($request->adress_iframe )) {
-            $adress_iframe	 = $request->adress_iframe	 ;
-        } else {
-            $adress_iframe	 = $settings->adress_iframe	 ;
-        }
-*/
+        /* if(isset($request->adress_iframe )) {
+              $adress_iframe	 = $request->adress_iframe	 ;
+          } else {
+              $adress_iframe	 = $settings->adress_iframe	 ;
+          }
+  */
         if(isset($request->favicon )) {
             $favicon = $request->favicon ;
         } else {
@@ -175,18 +154,29 @@ class AdminController extends Controller
             'tel_1' => $tel_1,
             'tel_2' => $tel_2,
             'adress' => $adress,
-           // 'adress_iframe	' => $adress_iframe	,
+            // 'adress_iframe	' => $adress_iframe	,
             'favicon' => $favicon,
             'icon' => $icon,
-
-
-
-
         ]);
-
-
-
         return back()->with('success', 'Site bilgileri başarıyla güncellendi.');
+    }
+
+    public function  uyekayit()
+    {
+        return view('backend.uyekayit');
+    }
+
+    public function uyekayit_post(Request $request)
+    {
+        $user= new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->last_name = $request->last_name;
+        $user->telefon = $request->telefon;
+        $user->izin = $request->izin;
+        $user->password=bcrypt($request->password);
+        $user->save();
+        return redirect('admin/uye-listesi')->with('success', $request->name.' isimli üye başarıyla oluşturuldu.');
     }
 
     public function  uyelistesi()
@@ -220,7 +210,7 @@ class AdminController extends Controller
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'telefon' => $request->input('telefon'),
-            'avatar' => $request->input('avatar'),
+            'izin' => $request->input('izin'),
         ]);
         if($request->password != '') {
             DB::table('users')->where('id', $request->id)->update([

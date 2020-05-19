@@ -1,16 +1,126 @@
+<?php
+$settings = DB::table('settings')->first();
+date_default_timezone_set('Europe/Istanbul');
+class Detect
+{
+    public static function systemInfo()
+    {
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $os_platform    = "Bilinmeyen İşletim sistemi";
+        $os_array       = array(
+            '/windows nt 10/i'      =>  'Windows 10',
+            '/windows nt 6.3/i'     =>  'Windows 8.1',
+            '/windows phone 8/i'    =>  'Windows Phone 8',
+            '/windows phone os 7/i' =>  'Windows Phone 7',
+            '/windows nt 6.2/i'     =>  'Windows 8',
+            '/windows nt 6.1/i'     =>  'Windows 7',
+            '/windows nt 6.0/i'     =>  'Windows Vista',
+            '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+            '/windows nt 5.1/i'     =>  'Windows XP',
+            '/windows xp/i'         =>  'Windows XP',
+            '/windows nt 5.0/i'     =>  'Windows 2000',
+            '/windows me/i'         =>  'Windows ME',
+            '/win98/i'              =>  'Windows 98',
+            '/win95/i'              =>  'Windows 95',
+            '/win16/i'              =>  'Windows 3.11',
+            '/macintosh|mac os x/i' =>  'Mac OS X',
+            '/mac_powerpc/i'        =>  'Mac OS 9',
+            '/linux/i'              =>  'Linux',
+            '/ubuntu/i'             =>  'Ubuntu',
+            '/iphone/i'             =>  'iPhone',
+            '/ipod/i'               =>  'iPod',
+            '/ipad/i'               =>  'iPad',
+            '/android/i'            =>  'Android',
+            '/blackberry/i'         =>  'BlackBerry',
+            '/webos/i'              =>  'Mobile');
+        $found = false;
+        $device = '';
+        foreach ($os_array as $regex => $value)
+        {
+            if($found)
+                break;
+            else if (preg_match($regex, $user_agent))
+            {
+                $os_platform    =   $value;
+                $device = !preg_match('/(windows|mac|linux|ubuntu)/i',$os_platform)
+                    ?'MOBILE':(preg_match('/phone/i', $os_platform)?'MOBILE':'SYSTEM');
+            }
+        }
+        $device = !$device? 'SYSTEM':$device;
+        return array('os'=>$os_platform,'device'=>$device);
+    }
+
+    public static function browser()
+    {
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+        $browser        =   "Bilinmeyen tarayıcı";
+
+        $browser_array  = array('/msie/i'       =>  'Internet Explorer',
+            '/firefox/i'    =>  'Firefox',
+            '/safari/i'     =>  'Safari',
+            '/chrome/i'     =>  'Chrome',
+            '/opera/i'      =>  'Opera',
+            '/netscape/i'   =>  'Netscape',
+            '/maxthon/i'    =>  'Maxthon',
+            '/konqueror/i'  =>  'Konqueror',
+            '/mobile/i'     =>  'Handheld Browser');
+        $found = false;
+        foreach ($browser_array as $regex => $value)
+        {
+            if($found)
+                break;
+            else if (preg_match($regex, $user_agent,$result))
+            {
+                $browser    =   $value;
+            }
+        }
+        return $browser;
+    }
+}
+$system = Detect::systemInfo();
+$browser = Detect::browser();
+$ip = Request::ip();
+$page = Request::path();
+if($page == '/') {
+    $page = 'anasayfa';
+}
+$kontrol = DB::table('istatistik')->where('ip', $ip)->whereDay('date', date('d'))->count();
+if($kontrol > 0) {
+    DB::table('istatistik')->insert([
+        'ip' => $ip,
+        'date' => date('YmdHis'),
+        'page' => $page,
+        'device' => $system['os'],
+        'browser' => $browser,
+        'ms' => $system['device'],
+        'tekil' => 0
+    ]);
+} else {
+    DB::table('istatistik')->insert([
+        'ip' => $ip,
+        'date' => date('YmdHis'),
+        'page' => $page,
+        'device' => $system['os'],
+        'browser' => $browser,
+        'ms' => $system['device'],
+        'tekil' => 1
+    ]);
+}
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Haber</title>
+    <title>{{$settings->site_name}}</title>
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="assets/images/ico/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="assets/images/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="assets/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="assets/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="{{asset('/public/img/'.$settings->favicon)}}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{asset('/public/img/'.$settings->favicon)}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('/public/img/'.$settings->favicon)}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('/public/img/'.$settings->favicon)}}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('/public/img/'.$settings->favicon)}}">
 
     <!-- jquery ui css -->
     <link href="{{asset('/public/assets/css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -52,20 +162,29 @@
                     <!-- Start header social -->
                     <div class="header-social">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li class="hidden-xs"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                            <li class="hidden-xs"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                            @if($settings->facebook != '')
+                            <li><a href="{{$settings->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                            @endif
+                            @if($settings->twitter != '')
+                            <li><a href="{{$settings->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                            @endif
+                            @if($settings->instagram != '')
+                            <li><a href="{{$settings->instagram}}"><i class="fa fa-instagram"></i></a></li>
+                            @endif
+                            @if($settings->youtube != '')
+                            <li class="hidden-xs"><a href="{{$settings->youtube}}"><i class="fa fa-youtube-play"></i></a></li>
+                            @endif
+                            @if($settings->linkedin != '')
+                            <li class="hidden-xs"><a href="{{$settings->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                            @endif
                         </ul>
                     </div>
                     <!-- End of /. header social -->
                     <!-- Start top left menu -->
                     <div class="top-left-menu">
                         <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Donation</a></li>
+                            <li><a href="/iletisim">İletişim</a></li>
+                            <li><a href="/reklam">Reklam</a></li>
                         </ul>
                     </div>
                     <!-- End of /. top left menu -->
@@ -74,9 +193,14 @@
                 <div class="hidden-xs col-md-6 col-sm-6 col-lg-6">
                     <div class="header-right-menu">
                         <ul>
-                            <li>Currency: <a href="#">USD</a></li>
-                            <li>Wishlist: <a href="#">12</a></li>
-                            <li> <a href="#"><i class="fa fa-lock"></i> Sign Up </a>or<a href="#">   Login</a></li>
+                            <li>Dolar : <a href="javascript:void(0)">6.85</a></li>
+                            <li>
+                                @if(isset(Auth::user()->id))
+                                    <a href="/panel"><i class="fa fa-user"></i>{{Auth::user()->name}} {{Auth::user()->last_name}}</a>
+                                @else
+                                    <a href="/kayit-ol"><i class="fa fa-lock"></i> Kayıt Ol </a>veya<a href="/giris">Giriş Yap</a>
+                                @endif
+                            </li>
                         </ul>
                     </div>
                 </div> <!-- end of /. header top right menu -->
@@ -90,7 +214,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo">
-                        <a href="/"><img src="{{asset('/public/assets/images/logo.png')}}" class="img-responsive" alt=""></a>
+                        <a href="/"><img src="{{asset('/public/img/'.$settings->icon)}}" class="img-responsive" alt="{{$settings->site_name}} logo"></a>
 
                     </div>
                 </div>

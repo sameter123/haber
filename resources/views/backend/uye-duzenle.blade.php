@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
     <?php
-    $user = DB::table('users')->where('email', $id)->first();
+    $u = DB::table('users')->where('email', $id)->first();
     ?>
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -28,10 +28,10 @@
                                         <!-- users edit media object start -->
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{asset('public/app-assets/images/portrait/small/avatar-s-18.jpg')}}" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
+                                                <img src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} avatarı" class="users-avatar-shadow rounded" height="90" width="90">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <h4 class="media-heading">Angelo Sashington</h4>
+                                                <h4 class="media-heading">{{$u->name}} {{$u->last_name}}</h4>
                                                 <div class="col-12 d-flex mt-1 px-0">
                                                     <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Değiştir</a>
                                                     <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i class="feather icon-edit-1"></i></a>
@@ -43,67 +43,88 @@
                                         <form method="POST">
                                             {{csrf_field()}}
                                             <div class="row">
-                                                <div class="col-12 col-sm-6">
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Ad</label>
                                                             <input type="text"
                                                                    class="form-control"
                                                                    name="name"
-                                                                   value="{{$user->name}}"
-                                                                   placeholder="Adınızı Giriniz ..." >
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="controls">
-                                                            <label>Email</label>
-                                                            <input type="email"
-                                                                   class="form-control"
-                                                                   name="email"
-                                                                   value="{{$user->email}}"
-                                                                   placeholder="Email Giriniz ...">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="controls">
-                                                            <label>Şifre</label>
-                                                            <input type="text"
-                                                                   class="form-control"
-                                                                   name="password"
-                                                                   placeholder="Şifre Giriniz ...">
+                                                                   value="{{$u->name}}"
+                                                                   placeholder="Ad">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6">
-
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Soyad</label>
                                                             <input type="text"
                                                                    class="form-control"
                                                                    name="last_name"
-                                                                   value="{{$user->last_name}}"
-                                                                   placeholder="Soyad Giriniz ...">
+                                                                   value="{{$u->last_name}}"
+                                                                   placeholder="Soyad">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Email</label>
+                                                            <input type="email"
+                                                                   class="form-control"
+                                                                   name="email"
+                                                                   value="{{$u->email}}"
+                                                                   placeholder="E-posta">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Telefon</label>
                                                             <input type="text"
                                                                    class="form-control"
                                                                    name="telefon"
-                                                                   value="{{$user->telefon}}"
+                                                                   value="{{$u->telefon}}"
                                                                    placeholder="Telefon Giriniz ...">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>İzin</label>
+                                                            <select class="form-control" name="izin">
+                                                                <option value="1" @if($u->izin == 1) selected @endif>Yönetici</option>
+                                                                <option value="2" @if($u->izin == 2) selected @endif>Üye</option>
+                                                                <option value="3" @if($u->izin == 3) selected @endif>Moderatör</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Şifre</label>
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="password"
+                                                                   placeholder="Şifre">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
                                                     <div class="form-group">
                                                         <label> Tekar Şifre</label>
-                                                        <input type="text" class="form-control" placeholder="Şifre Giriniz ...">
+                                                        <input type="text" class="form-control" placeholder="Şifre Tekrarı">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                                                    <button type="submit" name="POST" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
-                                                      Kaydet  </button>
+                                                    <input type="hidden" name="id" value="{{$u->id}}">
+                                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
+                                                      Kaydet
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>

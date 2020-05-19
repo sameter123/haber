@@ -1,4 +1,11 @@
 @extends('backend.layouts.master')
+@section('css')
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/css/pages/data-list-view.css')}}">
+    <!-- END: Page CSS-->
+@endsection
 @section('content')
     <?php
     if(isset($_GET['uye']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
@@ -26,72 +33,78 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/haber/admin">Anasayfa</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Üye İşlemleri</a>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Üye İşlemleri</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Üye Listeleme
+                                    <li class="breadcrumb-item active">Üyeler
                                     </li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrum-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="content-body">
-                <!-- Data list view starts -->
-                <section id="data-thumb-view" class="data-thumb-view-header">
-                    <div class="action-btns d-none">
-                        <div class="btn-dropdown mr-1 mb-1">
-                            <div class="btn-group dropdown actions-dropodown">
-                                <button type="button" class="btn btn-white px-1 py-1 dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Actions
+
+                @if (session('success'))
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success alert-dismissable" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="feather icon-x-circle"></i></span>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#"><i class="feather icon-trash"></i>Delete</a>
-                                    <a class="dropdown-item" href="#"><i class="feather icon-archive"></i>Archive</a>
-                                    <a class="dropdown-item" href="#"><i class="feather icon-file"></i>Print</a>
-                                    <a class="dropdown-item" href="#"><i class="feather icon-save"></i>Another Action</a>
-                                </div>
+                                <i class="feather icon-check-circle mr-1 align-middle"></i>
+                                <span class="mb-0">{{ session('success') }}</span>
                             </div>
                         </div>
                     </div>
+
+            @endif
+
+                <!-- Data list view starts -->
+                <section id="basic-datatable">
                     <!-- dataTable starts -->
                     <div class="table-responsive">
-                        <table class="table data-thumb-view">
+                        <table class="table zero-configuration1">
                             <thead>
                             <tr>
-                                <th></th>
                                 <th>Avatar</th>
-                                <th>ID</th>
-                                <th>İsim</th>
-                                <th>Soyisim</th>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>E-posta</th>
                                 <th>Telefon</th>
-                                <th>Email</th>
-
+                                <th>İzin</th>
+                                <th>Üyelik Tarihi</th>
+                                <th>İşlem</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach(DB::table('users')->get() as $u)
                             <tr>
-                                <td></td>
-                                <td class="product-img"><img src="{{asset('public/app-assets/images/portrait/small/avatar-s-18.jpg')}}" height="90" width="90">
+                                <td class="product-img">
+                                    @if($u->image != '')
+                                    <img width="64" height="64" src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} Avatarı">
+                                    @else
+                                    <span class="text-danger">Avatar Yok</span>
+                                    @endif
                                 </td>
-                                <td> {{ $user ->id }} </td>
-                                <td> {{ $user ->name }}</td>
-                                <td> {{ $user ->last_name }}</td>
-                                <td> {{ $user ->telefon }}</td>
-                                <td> {{ $user ->email }}</td>
+                                <td>{{$u->name}}</td>
+                                <td>{{$u->last_name}}</td>
+                                <td>{{$u->email}}</td>
+                                <td>{{$u->telefon}}</td>
+                                <td>
+                                    @if($u->izin == 1) Yönetici
+                                        @elseif($u->izin == 2) Üye
+                                        @else Moderatör
+                                        @endif
+                                </td>
+                                <td>{{$u->created_at}}</td>
                                 <td class="product-action">
-                                    <a href="/haber/admin/uye-duzenle/{{$user->email}}" class="action-edit"><i class="feather icon-edit"></i></a>
-                                    <a href="?uye={{$user->id}}&sil&token={{ csrf_token() }}"><i class="feather icon-trash"></i></a>
-                                    </form>
+                                    <button onclick="location.href='uye-duzenle/{{$u->email}}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                        <i class="feather icon-edit"></i>
+                                    </button>
+                                    <button data-toggle="tooltip" data-placement="top" title="Sil" onclick="location.href='?uye={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                        <i class="feather icon-delete"></i>
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach
@@ -100,11 +113,50 @@
                     </div>
                     <!-- dataTable ends -->
 
-
                 </section>
                 <!-- Data list view end -->
 
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('/public/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/dataTables.select.min.js')}}"></script>
+    <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js')}}"></script>
+    <!-- END: Page JS-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.zero-configuration1').DataTable( {
+                columnDefs: [ { orderable: false, targets: [ 3 ] } ],
+                pageLength: 10,
+                "order": [[ 0, "desc" ]],
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "Henüz hiç veri yok.",
+                    "info":           "_TOTAL_ adet veri içinden _START_ - _END_ arası gösteriliyor",
+                    "infoEmpty":      "Toplamda 0 veri var.",
+                    "infoFiltered":   "(_MAX_ adet veri içinde arama yapılıyor)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "_MENU_ veri gösteriliyor",
+                    "loadingRecords": "Yükleniyor...",
+                    "processing":     "İşleniyor...",
+                    "search":         "Ara:",
+                    "zeroRecords":    "Eşleşen veri bulunamadı",
+                    "paginate": {
+                        "first":      "İlk",
+                        "last":       "Son",
+                        "next":       "Sonraki",
+                        "previous":   "Önceki"
+                    },
+                }
+            } );
+        } );
+    </script>
 @endsection

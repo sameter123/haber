@@ -26,73 +26,95 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                                         <!-- users edit media object start -->
-                                        <div class="media mb-2">
-                                            <a class="mr-2 my-25" href="#">
-                                                <img src="{{asset('public/app-assets/images/portrait/small/avatar-s-18.jpg')}}" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
-                                            </a>
-                                            <div class="media-body mt-50">
-                                                <h4 class="media-heading">Angelo Sashington</h4>
-                                                <div class="col-12 d-flex mt-1 px-0">
-                                                    <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Değiştir</a>
-                                                    <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i class="feather icon-edit-1"></i></a>
-                                                    <a href="#" class="btn btn-outline-danger d-none d-sm-block">Sil</a>
-                                                    <a href="#" class="btn btn-outline-danger d-block d-sm-none"><i class="feather icon-trash-2"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <form method="POST">
                                             {{csrf_field()}}
                                             <div class="row">
-                                                <div class="col-12 col-sm-6">
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Ad</label>
-                                                            <input type="text" class="form-control" name="name" placeholder="Adınızı Giriniz ..." >
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="controls">
-                                                            <label>Email</label>
-                                                            <input type="email" class="form-control" name="email" placeholder="Email Giriniz ...">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="controls">
-                                                            <label>Şifre</label>
-                                                            <input type="text" class="form-control" name="password" placeholder="Şifre Giriniz ...">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="name"
+                                                                   placeholder="Ad">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6">
-
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Soyad</label>
-                                                            <input type="text" class="form-control" name="last_name" placeholder="Soyad Giriniz ...">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="last_name"
+                                                                   placeholder="Soyad">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Email</label>
+                                                            <input type="email"
+                                                                   class="form-control"
+                                                                   name="email"
+                                                                   placeholder="E-posta">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Telefon</label>
-                                                            <input type="text" class="form-control" name="telefon" placeholder="Telefon Giriniz ...">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="telefon"
+                                                                   placeholder="Telefon Giriniz ...">
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>İzin</label>
+                                                            <select class="form-control" name="izin">
+                                                                <option value="1">Yönetici</option>
+                                                                <option value="2">Üye</option>
+                                                                <option value="3">Moderatör</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Şifre</label>
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   name="password"
+                                                                   placeholder="Şifre">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6">
                                                     <div class="form-group">
                                                         <label> Tekar Şifre</label>
-                                                        <input type="text" class="form-control" placeholder="Şifre Giriniz ...">
+                                                        <input type="text" class="form-control" placeholder="Şifre Tekrarı">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                                                    <button type="submit" name="POST" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
-                                                       Kaydet </button>
+                                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
+                                                        Kaydet
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
                                         <!-- users edit account form ends -->
                                     </div>
 
-                                        </form>
-                                        <!-- users edit socail form ends -->
+                                    </form>
+                                        <!-- users edit account form ends -->
+                                    </div>
                                     </div>
                                 </div>
                             </div>
