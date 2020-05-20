@@ -8,11 +8,11 @@
 @endsection
 @section('content')
     <?php
-    if(isset($_GET['uye']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
-        $uye_id = $_GET['uye'];
+    if(isset($_GET['kategori']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
+        $uye_id = $_GET['kategori'];
         $token = $_GET['token'];
         if(Session::token() == $token) {
-            DB::table('kategoriler')->where('id', $uye_id)->delete();
+            DB::table('kategoriler')->where('id', $kategori_id)->delete();
             header("Location: ?okey");
             die();
         } else {
