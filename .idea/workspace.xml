@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/uye-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/uye-duzenle.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/uyekayit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/uyekayit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +31,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,24 +181,26 @@
       <workItem from="1589709389316" duration="2885000" />
       <workItem from="1589786656429" duration="1152000" />
       <workItem from="1589853906194" duration="4963000" />
+      <workItem from="1589912061493" duration="5381000" />
+      <workItem from="1589925562260" duration="2139000" />
+      <workItem from="1589943058457" duration="635000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="189" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589485313221">

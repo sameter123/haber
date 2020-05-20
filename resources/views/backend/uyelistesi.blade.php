@@ -81,7 +81,7 @@
                             @foreach(DB::table('users')->get() as $u)
                             <tr>
                                 <td class="product-img">
-                                    @if($u->image != '')
+                                    @if($u->avatar != '')
                                     <img width="64" height="64" src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} Avatarı">
                                     @else
                                     <span class="text-danger">Avatar Yok</span>
