@@ -1,5 +1,5 @@
 <?php
-//bak tamam çözdüm, şöyle
+//geldi mi
 namespace App\Http\Controllers;
 
 use App\User;
