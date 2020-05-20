@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/uyelistesi.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,7 +179,7 @@
       <workItem from="1589853906194" duration="4963000" />
       <workItem from="1589912061493" duration="5381000" />
       <workItem from="1589925562260" duration="2139000" />
-      <workItem from="1589943058457" duration="635000" />
+      <workItem from="1589943058457" duration="1351000" />
     </task>
     <servers />
   </component>

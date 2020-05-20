@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
+// atom://teletype/portal/8b6755e5-0602-4c23-827c-fcb298e3ac44
 class AdminController extends Controller
 {
     public function index()
@@ -220,5 +219,9 @@ class AdminController extends Controller
         return redirect('admin/uye-listesi')->with('success', 'Üye başarıyla düzenlendi.');
     }
 
+public function kategorilistesi()
+{
+  return view('backend.kategorilistesi');
+}
 
 }

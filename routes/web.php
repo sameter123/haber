@@ -35,6 +35,6 @@ Route::group(['prefix' => '/admin'], function() {
     Route::get('/uye-listesi', 'AdminController@uyelistesi');
     Route::get('/uye-duzenle/{ne}', 'AdminController@uye_duzenle');
     Route::post('/uye-duzenle/{ne}', 'AdminController@uye_duzenle_post');
+    Route::get('/kategori-listesi', 'AdminController@kategorilistesi');
 
 });
-

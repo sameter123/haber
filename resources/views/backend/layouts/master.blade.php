@@ -401,41 +401,41 @@ $settings = DB::table('settings')->first();
                 </li>
             @endif
             @if(Auth::user()->izin==1 or Auth::user()->izin==3)
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
+                <li class=" nav-item"><a href="#"><i class="feather icon-edit"></i><span class="menu-title"
                                                                                          data-i18n="User">Haberler</span></a>
                     <ul class="menu-content">
-                        <li><a href="/haber/admin/haber-ekle"><i class="feather icon-user-plus"></i><span
+                        <li><a href="/haber/admin/haber-ekle"><i class="feather icon-edit-2"></i><span
                                     class="menu-item" data-i18n="List">Haber Ekle</span></a>
                         </li>
-                        <li><a href="/haber/admin/haber-listesi"><i class="feather icon-users"></i><span
-                                    class="menu-item" data-i18n="List">Haber Listele</span></a>
-                        </li>
-                        <li><a href="/admin/ayarlar"><i class="feather icon-eye"></i><span class="menu-item"
-                                                                                           data-i18n="List">Haber Görüntüleme</span></a>
+                        <li><a href="/haber/admin/haber-listesi"><i class="feather icon-file-text"></i><span
+                                    class="menu-item" data-i18n="List">Haberler</span></a>
                         </li>
 
                     </ul>
                 </li>
             @endif
             @if(Auth::user()->izin==1 or Auth::user()->izin==2)
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                                                                                         data-i18n="User">Yorumlar</span></a>
-                    <ul class="menu-content">
-                        <li><a href="/haber/admin/haber-ekle"><i class="feather icon-user-plus"></i><span
-                                    class="menu-item" data-i18n="List">Yorum Ekle</span></a>
-                        </li>
-                        <li><a href="/haber/admin/haber-listesi"><i class="feather icon-users"></i><span
-                                    class="menu-item" data-i18n="List">Yorum Listele</span></a>
-                        </li>
-                        <li><a href="/admin/ayarlar"><i class="feather icon-eye"></i><span class="menu-item"
-                                                                                           data-i18n="List">Yorum Görüntüleme</span></a>
-                        </li>
-
-                    </ul>
-                </li>
+               <li class=" nav-item"><a href="/haber/admin"><i class="fa fa-comments"></i><span class="menu-title"
+                                                                                                      data-i18n="Email">Yorumlar</span></a>
             @endif
 
+            @if(Auth::user()->izin==1)
+            <li class=" nav-item"><a href="/haber/admin"><i class="feather icon-file"></i><span class="menu-title"
+                                                                                                data-i18n="Email">Sayfalar</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-list"></i><span class="menu-title"
+                                                                                     data-i18n="User">Kategori</span></a>
+                <ul class="menu-content">
+                    <li><a href="/haber/admin/haber-ekle"><i class="fa fa-plus"></i><span
+                                class="menu-item" data-i18n="List">Kategori Ekle</span></a>
+                    </li>
+                    <li><a href="/haber/admin/haber-listesi"><i class="fa fa-list-alt"></i><span
+                                class="menu-item" data-i18n="List">Kategori Listeleme</span></a>
+                    </li>
 
+                </ul>
+            </li>
+@endif
         </ul>
 
     </div>
