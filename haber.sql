@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 19 May 2020, 03:32:30
+-- Üretim Zamanı: 21 May 2020, 07:00:44
 -- Sunucu sürümü: 10.4.10-MariaDB
 -- PHP Sürümü: 7.4.0
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `istatistik` (
   `tekil` int(11) DEFAULT 1,
   `haber` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Tablo döküm verisi `istatistik`
@@ -104,7 +104,12 @@ INSERT INTO `istatistik` (`id`, `ip`, `date`, `page`, `device`, `browser`, `ms`,
 (3, '127.0.0.1', '2020-05-19 04:22:01', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
 (4, '127.0.0.1', '2020-05-19 04:22:20', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
 (5, '127.0.0.1', '2020-05-19 04:23:02', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
-(6, '127.0.0.1', '2020-05-19 04:23:30', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0);
+(6, '127.0.0.1', '2020-05-19 04:23:30', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(7, '127.0.0.1', '2020-05-19 22:30:18', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(8, '127.0.0.1', '2020-05-21 05:09:19', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 1, 0),
+(9, '127.0.0.1', '2020-05-21 05:09:51', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(10, '127.0.0.1', '2020-05-21 06:15:22', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0),
+(11, '127.0.0.1', '2020-05-21 09:52:39', 'anasayfa', 'Windows 10', 'Chrome', 'SYSTEM', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -120,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `kategoriler` (
   `image` text NOT NULL,
   `genel` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `kategoriler`
@@ -130,7 +135,8 @@ INSERT INTO `kategoriler` (`id`, `title`, `title_2`, `image`, `genel`) VALUES
 (1, 'Gündem', 'Gündeme dair haberleri bulabileceğiniz haber kategorisi', '', 0),
 (2, 'Magazin', 'Gündeme dair magazin haberleri', '', 1),
 (3, 'Siyaset', 'Siyaset haberleri kategorisi', '', 0),
-(4, 'Ekonomi', 'Ekonomi haberleri kategorisi', '', 0);
+(4, 'Ekonomi', 'Ekonomi haberleri kategorisi', '', 0),
+(5, 'Ülke Ekonomisi', 'Ülke Ekonomisi hakkında içerikler burada yer alır', '', 4);
 
 -- --------------------------------------------------------
 
@@ -215,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`id`, `site_name`, `site_description`, `footer_text`, `icon`, `favicon`, `meta_tag`, `analytics`, `tel_1`, `tel_2`, `email_1`, `email_2`, `facebook`, `twitter`, `youtube`, `linkedin`, `instagram`, `adress`, `adress_iframe`, `robots`, `created_at`, `updated_at`) VALUES
-(1, 'Deneme ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Deneme ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -239,15 +245,33 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`) USING HASH
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Tablo döküm verisi `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `telefon`, `avatar`, `izin`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Yönetici', 'Hesabı', 'sametmertozturk2@gmail.com', NULL, '5314534731', 'avatars/avatar.png', 1, '$2y$10$8WuKRAsxVwaENkQ/Rg8N..in9XRmGW6mVS4lNOgMDbZ96dgtUcuPu', NULL, '2020-05-14 20:58:38', '2020-05-14 20:58:38'),
-(3, 'S. Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, '5314534731', 'avatars/avatar.png', 1, '$2y$10$0PwAwKvFRe0qCcNntsli.uKScp7bsBFgFNgQAQamZMbKDWDMQNXYa', NULL, '2020-05-19 03:29:24', '2020-05-19 03:29:24');
+(4, 'üye', 'hesabı', 'uye@uye.com', NULL, '05314534731', '', 2, '$2y$10$YZGZXMNKIPaDq3GNAY9l5uM42P51AEVlLnLu0rbzexjH6o81eLbKS', NULL, '2020-05-19 19:30:57', '2020-05-19 19:30:57'),
+(3, 'S. Mert', 'Öztürk', 'sametmertozturk1@gmail.com', NULL, '5314534731', 'avatars/1590039812.jpeg', 1, '$2y$10$0PwAwKvFRe0qCcNntsli.uKScp7bsBFgFNgQAQamZMbKDWDMQNXYa', 'F6zUk4RIx4qm2C5f876SvI7jnGwGNAZrUmJVJBcR6eu3vMDYIFjJMsZWPZDe', '2020-05-19 03:29:24', '2020-05-19 03:29:24');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `yorumlar`
+--
+
+DROP TABLE IF EXISTS `yorumlar`;
+CREATE TABLE IF NOT EXISTS `yorumlar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text DEFAULT NULL,
+  `title_2` text DEFAULT NULL,
+  `uye` int(11) NOT NULL,
+  `haber` int(11) NOT NULL,
+  `onay` int(11) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
