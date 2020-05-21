@@ -167,18 +167,27 @@ class AdminController extends Controller
 
     public function uyekayit_post(Request $request)
     {
+        if(isset($request->avatar)) {
+            $info = getimagesize($request->avatar);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $request->avatar->move(public_path('img/avatars'), $imageName);
+        } else {
+            $imageName = '';
+        }
         $user= new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->last_name = $request->last_name;
         $user->telefon = $request->telefon;
         $user->izin = $request->izin;
+        $user->avaar = "avatars/".$imageName;
         $user->password=bcrypt($request->password);
         $user->save();
         return redirect('admin/uye-listesi')->with('success', $request->name.' isimli üye başarıyla oluşturuldu.');
     }
 
-    public function  uyelistesi()
+    public function uyelistesi()
     {
         $users=User::all();
         return view('backend.uyelistesi')->with('users',$users);
@@ -191,6 +200,16 @@ class AdminController extends Controller
 
     public function uye_duzenle_post(Request $request)
     {
+        if(isset($request->avatar)) {
+            $info = getimagesize($request->avatar);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $request->avatar->move(public_path('img/avatars'), $imageName);
+            DB::table('users')->where('id', $request->id)->update([
+                'avatar' => "avatars/".$imageName,
+            ]);
+            return redirect('admin/uye-listesi')->with('success', 'Üye avatarı başarıyla düzenlendi');
+        }
         request()->validate([
             'name' => 'required|min:2|max:50',
             'last_name' => 'required|min:2|max:50',
@@ -219,9 +238,57 @@ class AdminController extends Controller
         return redirect('admin/uye-listesi')->with('success', 'Üye başarıyla düzenlendi.');
     }
 
-public function kategorilistesi()
-{
-  return view('backend.kategorilistesi');
-}
+    public function kategoriler()
+    {
+      return view('backend.kategoriler');
+    }
+
+    public function kategori_ekle()
+    {
+        return view('backend.kategori-ekle');
+    }
+
+    public function kategori_ekle_post(Request $request)
+    {
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $request->avatar->move(public_path('img'), $imageName);
+        } else {
+            $imageName = '';
+        }
+        DB::table('kategoriler')->insert([
+            'title' => $request->title,
+            'title_2' => $request->title_2,
+            'image' => $imageName,
+            'genel' => $request->genel,
+        ]);
+        return redirect('admin/kategoriler')->with('success', 'Kategori ekleme işlemi başarılı');
+    }
+
+    public function kategori_duzenle($ne)
+    {
+        return view('backend.kategori-duzenle')->with('id', $ne);
+    }
+
+    public function kategori_duzenle_post(Request $request)
+    {
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $request->image->move(public_path('img'), $imageName);
+            DB::table('kategoriler')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('kategoriler')->where('id', $request->id)->update([
+            'title' => $request->title,
+            'title_2' => $request->title_2,
+            'genel' => $request->genel,
+        ]);
+        return redirect('admin/kategoriler')->with('success', 'Kategori düzenleme işlemi başarılı');
+    }
 
 }

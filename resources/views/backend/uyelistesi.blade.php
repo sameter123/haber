@@ -8,11 +8,11 @@
 @endsection
 @section('content')
     <?php
-    if(isset($_GET['uye']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
-        $uye_id = $_GET['uye'];
+    if(isset($_GET['id']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
+        $id = $_GET['id'];
         $token = $_GET['token'];
         if(Session::token() == $token) {
-            DB::table('users')->where('id', $uye_id)->delete();
+            DB::table('users')->where('id', $id)->delete();
             header("Location: ?okey");
             die();
         } else {
@@ -44,7 +44,32 @@
                 </div>
             </div>
             <div class="content-body">
-
+                @if (isset($_GET['okey']))
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success alert-dismissable" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="feather icon-x-circle"></i></span>
+                                </button>
+                                <i class="feather icon-check-circle mr-1 align-middle"></i>
+                                <span class="mb-0">Silme işlemi başarılı</span>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                    @if (isset($_GET['notOkey']))
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger alert-dismissable" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="feather icon-x-circle"></i></span>
+                                    </button>
+                                    <i class="feather icon-check-circle mr-1 align-middle"></i>
+                                    <span class="mb-0">Silme işlemi sırasında bir hata meydana geldi. Lütfen tekrar deneyin.</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 @if (session('success'))
                     <div class="row">
                         <div class="col-md-12">
@@ -57,8 +82,7 @@
                             </div>
                         </div>
                     </div>
-
-            @endif
+                @endif
 
                 <!-- Data list view starts -->
                 <section id="basic-datatable">
@@ -99,10 +123,10 @@
                                 </td>
                                 <td>{{$u->created_at}}</td>
                                 <td class="product-action">
-                                    <button onclick="location.href='uye-duzenle/{{$u->email}}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                    <button data-toggle="tooltip" title="{{$u->name}} adlı üyeyi düzenle" onclick="location.href='uye-duzenle/{{$u->email}}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
                                         <i class="feather icon-edit"></i>
                                     </button>
-                                    <button data-toggle="tooltip" data-placement="top" title="Sil" onclick="location.href='?uye={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                    <button data-toggle="tooltip" title="Sil" onclick="location.href='?id={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light">
                                         <i class="feather icon-delete"></i>
                                     </button>
                                 </td>
@@ -135,7 +159,7 @@
             $('.zero-configuration1').DataTable( {
                 columnDefs: [ { orderable: false, targets: [ 3 ] } ],
                 pageLength: 10,
-                "order": [[ 0, "desc" ]],
+                "order": [[ 6, "desc" ]],
                 "language": {
                     "decimal":        "",
                     "emptyTable":     "Henüz hiç veri yok.",

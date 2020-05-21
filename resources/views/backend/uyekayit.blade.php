@@ -26,7 +26,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                                         <!-- users edit media object start -->
-                                        <form method="POST">
+                                        <form method="POST" enctype="multipart/form-data">
                                             {{csrf_field()}}
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-6">
@@ -62,7 +62,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-sm-6">
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>Telefon</label>
@@ -73,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-sm-6">
+                                                <div class="col-md-4 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label>İzin</label>
@@ -82,6 +82,18 @@
                                                                 <option value="2">Üye</option>
                                                                 <option value="3">Moderatör</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Avatar</label>
+                                                            <input type="file"
+                                                                   accept="image/*"
+                                                                   class="form-control"
+                                                                   name="avatar"
+                                                            >
                                                         </div>
                                                     </div>
                                                 </div>

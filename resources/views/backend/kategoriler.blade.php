@@ -8,11 +8,11 @@
 @endsection
 @section('content')
     <?php
-    if(isset($_GET['kategori']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
-        $uye_id = $_GET['kategori'];
+    if(isset($_GET['id']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
+        $id = $_GET['id'];
         $token = $_GET['token'];
         if(Session::token() == $token) {
-            DB::table('kategoriler')->where('id', $kategori_id)->delete();
+            DB::table('kategoriler')->where('id', $id)->delete();
             header("Location: ?okey");
             die();
         } else {
@@ -28,14 +28,14 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Üye Listesi</h2>
+                            <h2 class="content-header-title float-left mb-0">Kategoriler</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/haber/admin">Anasayfa</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Üye İşlemleri</a>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Kategori İşlemleri</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Üyeler
+                                    <li class="breadcrumb-item active">Kategoriler
                                     </li>
                                 </ol>
                             </div>
@@ -44,7 +44,6 @@
                 </div>
             </div>
             <div class="content-body">
-
                 @if (session('success'))
                     <div class="row">
                         <div class="col-md-12">
@@ -57,7 +56,6 @@
                             </div>
                         </div>
                     </div>
-
             @endif
 
                 <!-- Data list view starts -->
@@ -67,31 +65,37 @@
                         <table class="table zero-configuration1">
                             <thead>
                             <tr>
-                                <th>Kategori Resmi</th>
-                                <th>Kategori Başlığı</th>
-                                <th>Kategori Açıklaması</th>
-                                <th>Genel</th>
-
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Resim</th>
+                                <th>Kategori Ağacı</th>
+                                <th>İşlem</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach(DB::table('kategoriler')->get() as $u)
                             <tr>
-                                <td class="product-img">
-                                    @if($u->image != '')
-                                    <img width="64" height="64" src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} Avatarı">
-                                    @else
-                                    <span class="text-danger">Avatar Yok</span>
-                                    @endif
-                                </td>
                                 <td>{{$u->title}}</td>
                                 <td>{{$u->title_2}}</td>
-
+                                <td class="product-img">
+                                    @if($u->image != '')
+                                    <img width="64" height="64" src="{{asset('/public/img/'.$u->image)}}" alt="{{$u->title}} resmi">
+                                    @else
+                                    <span class="text-danger">Resim Yok</span>
+                                    @endif
+                                </td>
+                                <td>
+                                        @if($u->genel != 0)
+                                    Genel > {{DB::table('kategoriler')->where('id', $u->genel)->first()->title}}
+                                        @else
+                                    Genel
+                                        @endif
+                                </td>
                                 <td class="product-action">
-                                    <button onclick="location.href='uye-duzenle/{{$u->email}}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                    <button data-toggle="tooltip" title="{{$u->title}} kategorisini düzenle" onclick="location.href='kategori-duzenle/{{$u->id}}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
                                         <i class="feather icon-edit"></i>
                                     </button>
-                                    <button data-toggle="tooltip" data-placement="top" title="Sil" onclick="location.href='?uye={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon btn-outline-info mr-1 mb-1 waves-effect waves-light">
+                                    <button data-toggle="tooltip" title="Sil" onclick="location.href='?id={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon btn-outline-danger mr-1 mb-1 waves-effect waves-light">
                                         <i class="feather icon-delete"></i>
                                     </button>
                                 </td>
@@ -101,10 +105,8 @@
                         </table>
                     </div>
                     <!-- dataTable ends -->
-
                 </section>
                 <!-- Data list view end -->
-
             </div>
         </div>
     </div>

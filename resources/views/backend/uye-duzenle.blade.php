@@ -2,6 +2,11 @@
 @section('content')
     <?php
     $u = DB::table('users')->where('email', $id)->first();
+    if(isset($_GET['sil'])) {
+        DB::table('users')->where('email', $id)->update(['avatar' => '']);
+        header("Location: ?okey");
+        exit();
+    }
     ?>
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -24,23 +29,59 @@
 
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
-                                        <!-- users edit media object start -->
-                                        <div class="media mb-2">
-                                            <a class="mr-2 my-25" href="#">
-                                                <img src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} avatarı" class="users-avatar-shadow rounded" height="90" width="90">
-                                            </a>
-                                            <div class="media-body mt-50">
-                                                <h4 class="media-heading">{{$u->name}} {{$u->last_name}}</h4>
-                                                <div class="col-12 d-flex mt-1 px-0">
-                                                    <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Değiştir</a>
-                                                    <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i class="feather icon-edit-1"></i></a>
-                                                    <a href="#" class="btn btn-outline-danger d-none d-sm-block">Sil</a>
-                                                    <a href="#" class="btn btn-outline-danger d-block d-sm-none"><i class="feather icon-trash-2"></i></a>
+                                    @if (isset($_GET['okey']))
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-success alert-dismissable" role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true"><i class="feather icon-x-circle"></i></span>
+                                                    </button>
+                                                    <i class="feather icon-check-circle mr-1 align-middle"></i>
+                                                    <span class="mb-0">Silme işlemi başarılı</span>
                                                 </div>
                                             </div>
                                         </div>
+                                    @endif
+                                    <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                                        <!-- users edit media object start -->
+                                        <div class="media mb-2">
+                                            <form method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                    <a class="mr-2 my-25" href="#">
+                                                        @if($u->avatar != '')
+                                                        <img src="{{asset('/public/img/'.$u->avatar)}}" alt="{{$u->name}} avatarı" class="users-avatar-shadow rounded" height="90" width="90">
+                                                        @endif
+                                                                <div class="form-group">
+                                                                    <div class="controls">
+                                                                        <label>Avatar</label>
+                                                                        <input type="file"
+                                                                               accept="image/*"
+                                                                               class="form-control"
+                                                                               name="avatar"
+                                                                        >
+                                                                        <small class="text-danger">* Direkt değiştirmek için yeni resim seçin ve yükleyin</small>
+                                                                    </div>
+                                                                </div>
+                                                    </a>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    <div class="media-body mt-50">
+                                                        <input type="hidden" name="id" value="{{$u->id}}">
+                                                        <div class="col-12 d-flex mt-1 px-0">
+                                                            <input type="submit" class="btn btn-primary d-none d-sm-block mr-75" value="Avatarı Yükle">
+                                                            <input type="submit" class="btn btn-primary d-block d-sm-none mr-75" value="Yükle">
+                                                            <a href="?sil=avatar" class="btn btn-outline-danger d-none d-sm-block">Avatarı Sil</a>
+                                                            <a href="?sil=avatar" class="btn btn-outline-danger d-block d-sm-none"><i class="feather icon-trash-2"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                                         <form method="POST">
+                                            <h4 class="media-heading">{{$u->name}} {{$u->last_name}}</h4>
                                             {{csrf_field()}}
                                             <div class="row">
                                                 <div class="col-md-4 col-sm-6">

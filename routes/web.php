@@ -23,18 +23,50 @@ Route::post('/kayit-ol', 'LoginController@register_post');
 
 
 Auth::routes();
-Route::get('/panel', 'AdminController@index')->middleware('auth');
-Route::get('/cikis', 'LoginController@logout')->middleware('auth');
+
+
 Route::group(['prefix' => '/admin'], function() {
+    /*
+     * Site Anasayfa
+     */
+    Route::get('/panel', 'AdminController@index')->middleware('auth');
     Route::get('/', 'AdminController@index');
     Route::get('/anasayfa', 'AdminController@index');
+
+    /*
+     * Site Ayarları
+     */
     Route::get('/ayarlar', 'AdminController@settings');
     Route::post('/ayarlar', 'AdminController@settings_post');
+
+    /*
+     * Üyelik işlemleri
+     */
     Route::get('/uye-ekle', 'AdminController@uyekayit');
     Route::post('/uye-ekle', 'AdminController@uyekayit_post');
     Route::get('/uye-listesi', 'AdminController@uyelistesi');
     Route::get('/uye-duzenle/{ne}', 'AdminController@uye_duzenle');
     Route::post('/uye-duzenle/{ne}', 'AdminController@uye_duzenle_post');
-    Route::get('/kategori-listesi', 'AdminController@kategorilistesi');
 
+    Route::get('/hesap-ayarlari', 'AdminController@hesap_ayarlari');
+    Route::post('/hesap-ayarlari', 'AdminController@hesap_ayarlari_post');
+    Route::get('/cikis', 'LoginController@logout')->middleware('auth');
+
+    /*
+     * Kategori İşlemleri
+     */
+    Route::get('/kategoriler', 'AdminController@kategoriler');
+    Route::get('/kategori-ekle', 'AdminController@kategori_ekle');
+    Route::post('/kategori-ekle', 'AdminController@kategori_ekle_post');
+    Route::get('/kategori-duzenle/{ne}', 'AdminController@kategori_duzenle');
+    Route::post('/kategori-duzenle/{ne}', 'AdminController@kategori_duzenle_post');
+
+    /*
+    * Haber İşlemleri
+    */
+    Route::get('/haberler', 'AdminController@haberler');
+    Route::get('/haber-ekle', 'AdminController@haber_ekle');
+    Route::post('/haber-ekle', 'AdminController@haber_ekle_post');
+    Route::get('/haber-duzenle/{ne}', 'AdminController@haber_duzenle');
+    Route::post('/haber-duzenle/{ne}', 'AdminController@haber_duzenle_post');
 });
