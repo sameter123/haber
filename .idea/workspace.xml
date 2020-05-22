@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="" />
+    <list default="true" id="5a273458-678b-4495-9936-1d360b0e7f55" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/sayfa-duzenle.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/sayfalar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/yorum-duzenle.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/yorumlar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/kategoriler.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/kategoriler.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +36,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,24 +190,25 @@
       <workItem from="1589912061493" duration="5381000" />
       <workItem from="1589925562260" duration="2139000" />
       <workItem from="1589943058457" duration="1351000" />
+      <workItem from="1590084332308" duration="9757000" />
+      <workItem from="1590110580126" duration="2163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="530" y="189" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589485313221">
@@ -211,10 +219,14 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1589655982835" />
-    <state x="635" y="358" key="NewPhpFileDialog" timestamp="1589710841228">
+    <state x="635" y="358" key="NewPhpFileDialog" timestamp="1590111779485">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="635" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1589710841228" />
+    <state x="635" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1590111779485" />
+    <state x="645" y="155" key="RollbackChangesDialog" timestamp="1590111651701">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="645" y="155" key="RollbackChangesDialog/0.0.1600.870@0.0.1600.870" timestamp="1590111651701" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1589350892466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

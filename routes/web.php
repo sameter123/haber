@@ -69,4 +69,21 @@ Route::group(['prefix' => '/admin'], function() {
     Route::post('/haber-ekle', 'AdminController@haber_ekle_post');
     Route::get('/haber-duzenle/{ne}', 'AdminController@haber_duzenle');
     Route::post('/haber-duzenle/{ne}', 'AdminController@haber_duzenle_post');
+
+    /*
+    * Yorum İşlemleri
+    */
+
+    Route::get('/yorumlar', 'AdminController@yorumlar');
+    Route::get('/yorum-duzenle/{ne}', 'AdminController@yorum_duzenle');
+    Route::post('/yorum-duzenle/{ne}', 'AdminController@yorum_duzenle_post');
+
+    /*
+    * Sayfa İşlemleri
+    */
+
+    Route::get('/sayfalar', 'AdminController@sayfalar');
+    Route::get('/sayfa-duzenle{ne}', 'AdminController@sayfa_duzenle');
+    Route::get('/sayfa-duzenle{ne}', 'AdminController@sayfa_duzenle_post');
+
 });

@@ -1,25 +1,27 @@
 @extends('backend.layouts.master')
 @section('css')
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('/public/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('/public/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/public/app-assets/css/pages/data-list-view.css')}}">
     <!-- END: Page CSS-->
 @endsection
 @section('content')
     <?php
-    if(isset($_GET['id']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
+    if (isset($_GET['id']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
         $id = $_GET['id'];
         $token = $_GET['token'];
-        if(Session::token() == $token) {
-            DB::table('kategoriler')->where('id', $id)->delete();
+        if (Session::token() == $token) {
+            DB::table('sayfalar')->where('id', $id)->delete();
             header("Location: ?okey");
             die();
         } else {
             header("Location: ?notOkey");
         }
     }
-?>
+    ?>
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -58,52 +60,44 @@
                     </div>
             @endif
 
-                <!-- Data list view starts -->
+            <!-- Data list view starts -->
                 <section id="basic-datatable">
                     <!-- dataTable starts -->
                     <div class="table-responsive">
                         <table class="table zero-configuration1">
                             <thead>
                             <tr>
-                                <th>Başlık</th>
-                                <th>Açıklama</th>
-                                <th>Resim</th>
-                                <th>Kategori Ağacı</th>
+                                <th>Sayfa Başlığı</th>
+                                <th>Sayfa Açıklaması</th>
                                 <th>İşlem</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(DB::table('kategoriler')->get() as $u)
-                            <tr>
-                                <td>{{$u->title}}</td>
-                                <td>{{$u->title_2}}</td>
-                                <td class="product-img">
-                                    @if($u->image != '')
-                                    <img width="64" height="64" src="{{asset('/public/img/'.$u->image)}}" alt="{{$u->title}} resmi">
-                                    @else
-                                    <span class="text-danger">Resim Yok</span>
-                                    @endif
-                                </td>
-                                <td>
-                                        @if($u->genel != 0)
-                                    Genel > {{DB::table('kategoriler')->where('id', $u->genel)->first()->title}}
-                                        @else
-                                    Genel
-                                        @endif
-                                </td>
-                                <td class="product-action">
-                                    <button data-toggle="tooltip"
-                                            title="{{$u->title}} kategorisini düzenle"
-                                            onclick="location.href='kategori-duzenle/{{$u->id}}'"
-                                            type="button"
-                                            class="btn btn-icon bg-gradient-info mr-1 mb-1 waves-effect waves-light">
-                                        <i class="feather icon-edit"></i>
-                                    </button>
-                                    <button data-toggle="tooltip" title="Sil" onclick="location.href='?id={{$u->id}}&sil&token={{ csrf_token() }}'" type="button" class="btn btn-icon bg-gradient-danger mr-1 mb-1 waves-effect waves-light">
-                                        <i class="feather icon-delete"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach(DB::table('sayfalar')->get() as $u)
+                                <tr>
+                                    <td>{{$u->title}}</td>
+                                    <td>{{$u->title_2}}</td>
+                                    <td class="product-action">
+                                            <button data-toggle="tooltip" title="{{$u->title}} kategorisini düzenle"
+                                                    onclick="location.href='yorum-duzenle/{{$u->id}}'" type="button"
+                                                    class="btn btn-icon bg-gradient-info mr-1 mb-1 waves-effect waves-light">
+                                                <i class="feather icon-edit"></i>
+                                            </button>
+                                            <button data-toggle="tooltip" title="Sil"
+                                                    onclick="location.href='?id={{$u->id}}&sil&token={{ csrf_token() }}'"
+                                                    type="button"
+                                                    class="btn btn-icon bg-gradient-danger mr-1 mb-1 waves-effect waves-light">
+                                                <i class="feather icon-delete"></i>
+                                            </button>
+                                        <button data-toggle="tooltip" title="Git"
+                                                onclick="location.href='?id={{$u->id}}&sil&token={{ csrf_token() }}'"
+                                                type="button"
+                                                class="btn btn-icon bg-gradient-primary mr-1 mb-1 waves-effect waves-light">
+                                            <i class="feather icon-corner-down-left"></i>
+                                        </button>
+
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -126,32 +120,32 @@
     <script src="{{asset('/public/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js')}}"></script>
     <!-- END: Page JS-->
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('.zero-configuration1').DataTable( {
-                columnDefs: [ { orderable: false, targets: [ 3 ] } ],
+        $(document).ready(function () {
+            $('.zero-configuration1').DataTable({
+                columnDefs: [{orderable: false, targets: [3]}],
                 pageLength: 10,
-                "order": [[ 0, "desc" ]],
+                "order": [[0, "desc"]],
                 "language": {
-                    "decimal":        "",
-                    "emptyTable":     "Henüz hiç veri yok.",
-                    "info":           "_TOTAL_ adet veri içinden _START_ - _END_ arası gösteriliyor",
-                    "infoEmpty":      "Toplamda 0 veri var.",
-                    "infoFiltered":   "(_MAX_ adet veri içinde arama yapılıyor)",
-                    "infoPostFix":    "",
-                    "thousands":      ",",
-                    "lengthMenu":     "_MENU_ veri gösteriliyor",
+                    "decimal": "",
+                    "emptyTable": "Henüz hiç veri yok.",
+                    "info": "_TOTAL_ adet veri içinden _START_ - _END_ arası gösteriliyor",
+                    "infoEmpty": "Toplamda 0 veri var.",
+                    "infoFiltered": "(_MAX_ adet veri içinde arama yapılıyor)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "_MENU_ veri gösteriliyor",
                     "loadingRecords": "Yükleniyor...",
-                    "processing":     "İşleniyor...",
-                    "search":         "Ara:",
-                    "zeroRecords":    "Eşleşen veri bulunamadı",
+                    "processing": "İşleniyor...",
+                    "search": "Ara:",
+                    "zeroRecords": "Eşleşen veri bulunamadı",
                     "paginate": {
-                        "first":      "İlk",
-                        "last":       "Son",
-                        "next":       "Sonraki",
-                        "previous":   "Önceki"
+                        "first": "İlk",
+                        "last": "Son",
+                        "next": "Sonraki",
+                        "previous": "Önceki"
                     },
                 }
-            } );
-        } );
+            });
+        });
     </script>
 @endsection

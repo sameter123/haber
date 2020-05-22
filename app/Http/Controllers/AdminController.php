@@ -291,4 +291,46 @@ class AdminController extends Controller
         return redirect('admin/kategoriler')->with('success', 'Kategori düzenleme işlemi başarılı');
     }
 
+    public function yorumlar()
+    {
+        return view('backend.yorumlar');
+    }
+
+    public function yorum_duzenle($ne)
+    {
+        return view('backend.yorum-duzenle')->with('id', $ne);
+    }
+
+    public function yorum_duzenle_post(Request $request)
+    {
+        DB::table('yorumlar')->where('id', $request->id)->update([
+            'title' => $request->title,
+            'title_2' => $request->title_2,
+
+        ]);
+        return view('backend.yorum-duzenle');
+    }
+
+    public function sayfalar()
+    {
+        return view('backend.sayfalar');
+
+    }
+
+    public function sayfa_duzenle($ne)
+    {
+        return view('backend.sayfa-duzenle')->with('id', $ne);
+    }
+
+    public function sayfa_duzenleme_post(Request $request)
+    {
+        DB::table('sayfalar')->where('id', $request->id)->update([
+            'title' => $request->title,
+            'title_2' => $request->title_2,
+            'text' => $request->text,
+
+        ]);
+        return view('backend.sayfalar');
+    }
+
 }
